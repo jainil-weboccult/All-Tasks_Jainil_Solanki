@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Task 6 Form</title>
+    <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>WIZARD FORM</h1>
+        </div>
+
+        <div class="btn-list">
+            <a href="#" class="btn active">STEP 1</a>
+            <a href="#" class="btn">STEP 2</a>
+            <a href="#" class="btn">STEP 3</a>
+        </div>
+
+        <div class="form-content">
+            <div class="form form1">
+                <label for="firstname">First Name: </label>
+                <input type="text" name="firstname" class="first_name" id="first_name" placeholder="Enter First Name" />
+                <br />
+                <br />
+                <label for="lastname">Last Name: </label>
+                <input type="text" name="lastname" class="last_name" id="last_name" placeholder="Enter Last Name" />
+
+                <div class="input-radio">
+                    <label for="Gender" style="padding-left: 50px">Gender: </label>
+                    <input type="radio" name="gender" value="Female" id="Female" class="gender"
+                         /><span>Female</span>
+                    <input type="radio" name="gender" value="Male" id="Male" class="gender" /><span>Male</span>
+                </div>
+            </div>
+
+            <div class="form hide form2">
+                <label for="email" style="padding-left: 59px">Email Id: </label>
+                <input style="margin-bottom: 10px" type="email" id="email" name="email" class="email"
+                    placeholder="Enter Email" />
+                <br />
+                <label for="contact" style="padding-left: 31.2px">Contact No: </label>
+                <input style="margin-bottom: 10px" type="tel" id="contact" name="contact" class="contact"
+                    placeholder="Enter Contact Number" />
+                <br />
+                <label for="dob">Date of Birth: </label>
+                <input type="date" name="dob" id="dob" class="date" placeholder="Enter Date" />
+            </div>
+
+            <div class="form hide form3">
+                <label for="fsports" style="margin-left: -24px">Favourite Sports:</label>
+                <select class="fsports" name="fsports" style="color: black; width: 360px" id="fsports">
+                    <option value="Cricket">Cricket</option>
+                    <option value="Chess">Chess</option>
+                    <option value="Hockey">Hockey</option>
+                </select>
+
+                <div class="about-content">
+                    <label for="about">About Yourself:</label>
+                    <textarea id="about" rows="1" name="about" class="about"
+                        placeholder="Tell us something about you...!"></textarea>
+                </div>
+                <div class="terms">
+                    <label for="terms" style="font-size: 14px">I agree to
+                        <span style="color: lightskyblue">Terms and Conditions</span></label>
+                    <input type="checkbox" name="terms" id="terms" />
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-list-bottom">
+            <a href="#" class="prev hide">PREVIOUS</a>
+            <a href="#" class="save">SAVE & NEXT</a>
+        </div>
+
+        <div class="border"></div>
+    </div>
+
+    <div class="table-data">
+        <table id="table">
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Email Id</th>
+                <th>Contact No</th>
+                <th>DOB</th>
+                <th>Sports</th>
+                <th>About You</th>
+                <th>T & C</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </table>
+    </div>
+    <script src="scripts/index.js"></script>
+</body>
+
+</html>

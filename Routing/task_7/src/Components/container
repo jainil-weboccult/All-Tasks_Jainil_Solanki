@@ -1,0 +1,35 @@
+import React from "react";
+
+export default function Menu(props) {
+  let slist = props.filedata.filter((item) => item.name === props.current);
+  console.log("Props", props.filedata);
+  return (
+    <>
+      {slist.map((item) => {
+        return (
+          <div key={item.name}>
+            <select
+              type="number"
+              className="arrows"
+              onClick={(e) => {
+                props.changestate((childstate) => e.target.value);
+              }}
+              key={item.name}
+            >
+              <option key="None" value="None">None</option>;
+              {item.items.map((iitem) => {
+                return (
+                  <>
+                    <option key={iitem.name} value={iitem.name}>{iitem.name}</option>;
+                    {console.log(iitem.name)}
+                    <Menu filedata={iitem.items} />
+                  </>
+                );
+              })}
+            </select>
+          </div>
+        );
+      })}
+    </>
+  );
+}

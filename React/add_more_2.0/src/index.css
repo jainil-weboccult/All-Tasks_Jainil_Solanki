@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap");
+* {
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Sora", sans-serif;
+}
+
+.add-btn {
+  background: green;
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid rgba(0, 255, 0, 1);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin: 10px 0px;
+}
+
+input {
+  color: grey;
+  padding: 5px 10px;
+  font-weight: 600;
+  margin: 10px 0px;
+}
+
+.add-child-btn {
+  background: black;
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid grey;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.submit-btn {
+  background: green;
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid rgba(0, 255, 0, 1);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.parent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.right {
+  position: fixed;
+  top: 0;
+  transform: translate(780px, -10px);
+}
+
+.items {
+  display: flex;
+  gap: 10px;
+  border: 1px solid yellow;
+  padding: 10px 180px 10px 10px;
+  margin: 5px 0px;
+}
+
+.delete-btn {
+  background: red;
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid grey;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.table {
+  border-collapse: collapse;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  margin: 10px 0;
+}
+
+td {
+  padding: 10px;
+  width: 350px;
+}
+
+.table-heading {
+  padding: 0px 10px;
+  font-size: 16px;
+}
+
+
+.scrolling{
+  overflow: auto;
+  height: 680px;
+  margin-top: -20px;
+}

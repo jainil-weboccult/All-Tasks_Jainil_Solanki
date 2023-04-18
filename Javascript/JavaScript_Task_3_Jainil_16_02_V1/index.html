@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Slider</title>
+    <link rel="stylesheet" href="styles/style.css">
+    
+  </head>
+  <body>
+    <h1>Image Slider</h1>
+    <div class="wrapper">
+      <a href="#" class="prevv" onclick="plusSlides(-1)">
+        <img class="prev" src="./assets/images/next.png" alt="previous"
+      /></a>
+      <div class="image1">
+        <div id="img1" class="img fade">
+          <img src="./assets/images/image1.jpg" alt="Image1" />
+          <p>SunSet</p>
+        </div>
+      </div>
+      <div class="image2">
+        <div id="img2" class="img fade">
+          <img src="./assets/images/image2.jpg" alt="Image1" />
+          <p>Spiral</p>
+        </div>
+      </div>
+
+      <div class="image3">
+        <div id="img3" class="img fade">
+          <img src="./assets/images/image3.jpg" alt="Image1" />
+          <p>Abstract</p>
+        </div>
+      </div>
+
+      <div class="image4">
+        <div id="img4" class="img fade">
+          <img src="./assets/images/image4.jpg" alt="Image1" />
+          <p>Desert</p>
+        </div>
+      </div>
+      <a href="#" class="nextt" onclick="plusSlides(1)">
+        <img class="next" src="./assets/images/next.png" alt="next"
+      /></a>
+
+      <div class="dots-list">
+        <a href="#img1" class="dot"
+          ><img src="./assets/images/dry-clean.png" alt="1"
+        /></a>
+
+        <a href="#img2" class="dot"
+          ><img src="./assets/images/dry-clean.png" alt="2"
+        /></a>
+
+        <a href="#img3" class="dot"
+          ><img src="./assets/images/dry-clean.png" alt="3"
+        /></a>
+
+        <a href="#img4" class="dot"
+          ><img src="./assets/images/dry-clean.png" alt="4"
+        /></a>
+        <a href="#" id="play" class="a">Play</a>
+        <a href="#" id="pause" class="a">Pause</a>
+      </div>
+    </div>
+    <script src="scripts/main.js"></script>
+  </body>
+  </html>

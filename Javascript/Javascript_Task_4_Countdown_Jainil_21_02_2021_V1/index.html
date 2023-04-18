@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Task 4 COUNTDOWN</title>
+    <link rel="stylesheet" href="styles/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="heading">
+          <h3>COUNTDOWN</h3>
+        </div>
+        <div class="time">
+          <table border="1" class="table-class">
+            <tr>
+              <td><p id="hour">00</p></td>
+              <td><p id="minutes">00</p></td>
+              <td><p id="seconds">00</p></td>
+              <td><p id="mseconds">00</p></td>
+            </tr>
+            <tr>
+              <td class="table-tag">Hours</td>
+              <td class="table-tag">Minutes</td>
+              <td class="table-tag">Seconds</td>
+              <td class="table-tag">C-Seconds</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="input">
+          <input
+            id="inputt"
+            type="number"
+            onchange="getvalue()"
+            placeholder="Enter Time in Seconds.."
+          />
+        </div>
+        <div class="btn-list">
+          <a href="#" class="btn Start">START</a>
+          <a href="#" class="btn Pause">PAUSE</a>
+          <a href="#" class="btn Stop">STOP</a>
+          <a href="#" class="btn Reset">RESET</a>
+        </div>
+
+        <div class="tagline">
+          <p id="Tag" class="tag">ENTER TIME & HIT START..!</p>
+        </div>
+      </div>
+    </div>
+    
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

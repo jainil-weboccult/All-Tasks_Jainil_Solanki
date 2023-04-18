@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+     * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      a {
+        text-decoration: none;
+        border: none;
+        font-size: 24px;
+        padding: 20px 20px;
+        background-color: #e9e8e8;
+        color:black;
+        border:1px solid lightgray;
+        border-radius: 5px;
+      }
+      
+      .link{
+        transition: 0.5s;
+        display: block;
+      }
+
+      .link::before{
+        content:url("right-arrowhead-black-triangular-shape.png");
+        margin-right: 5px;
+      }
+      .link.active{
+        color:white;
+        box-shadow: 0 10px ;
+        background-color: #0083f8;
+      }
+
+      .link.active::before{
+        content:url("triangular-black-arrow-pointing-down.png");
+        width: 10px;
+        height: 20px;
+        
+      }
+      
+      .hide {
+        padding: 20px 20px;
+        width: 580px;
+        text-align: justify;
+        font-size: 18px;
+        display: none;
+        
+      }
+      .show{
+        padding: 20px 20px;
+        width: 580px;
+        text-align: justify;
+        background-color: rgb(224, 221, 221);
+        font-size: 18px;
+        display: block;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+
+        
+        <a href="#sec1" class="link active">Section 1</a>
+        
+      <div id="sec1" class="hide show">
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </p>
+      </div>
+
+      <a href="#sec2" class="link">Section 2</a>
+      <div id="sec2" class="hide">
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged.
+        </p>
+      </div>
+
+      <a href="#sec3" class="link">Section 3</a>
+      <div id="sec3" class="hide">
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book.
+        </p>
+      </div>
+      <a href="#sec3" class="link">Section 4</a>
+      <div id="sec3" class="hide">
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry.
+        </p>
+      </div>
+    </div>
+
+    <script>
+        const btnlist = document.querySelectorAll('.link');
+  
+        const contentlist = document.querySelectorAll('.hide');
+  
+        btnlist.forEach((tab, index) => {
+          tab.addEventListener("click", () => {
+              btnlist.forEach(tab=>{tab.classList.remove("active")});
+              tab.classList.add("active");
+              contentlist.forEach(content=>{content.classList.add("hide"),content.classList.remove('show')});
+              contentlist[index].classList.remove('hide');
+              contentlist[index].classList.add('show');
+          });
+        });
+      </script>
+  </body>
+</html>

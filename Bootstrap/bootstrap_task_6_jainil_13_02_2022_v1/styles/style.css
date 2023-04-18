@@ -1,0 +1,453 @@
+/* General CSS */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul li {
+  list-style: none !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+h1 {
+  width: 585px;
+  max-width: 100%;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 900 !important;
+  font-size: 50px;
+  text-transform: uppercase;
+  padding-top: 100px;
+}
+
+h2 {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 900 !important;
+  font-size: 45px;
+  line-height: 133.02%;
+  color: #292929;
+}
+
+h3 {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 133.02%;
+  color: #292929;
+}
+
+h4 {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 133.02%;
+}
+
+h5 {
+  width: 100%;
+  max-width: 377px;
+
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 162.52%;
+  color: #ffffff;
+  opacity: 0.3;
+}
+
+h6 {
+  max-width: 475px;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500 !important;
+  font-size: 16px;
+  line-height: 175.52%;
+
+  color: #292929;
+
+  opacity: 0.4;
+}
+
+h7 {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 133.02%;
+  color: #292929;
+  opacity: 0.6;
+}
+
+/* Header Section CSS */
+
+.header-book-btn {
+  padding: 14px 47px;
+  font-family: "Inter", sans-serif;
+  margin-left: 150px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.18;
+  text-align: center;
+  transition: 0.5s;
+}
+
+.header-book-btn:hover {
+  box-shadow: 0 5px #ff7500;
+  border-color: #ff7500 !important;
+}
+
+.header {
+  padding-top: 58px;
+  padding-bottom: 100px;
+  background-color: #121212;
+}
+
+.menu ul li a{
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  transition: 0.5s;
+  color: #fff !important;
+  
+}
+
+.menu ul li:hover {
+  cursor: pointer;
+  box-shadow: 0 2px #ff7500;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+
+.navbar-toggler {
+  border-color: rgb(112, 112, 112) !important;
+} 
+
+
+.logo-line {
+  margin-bottom: 15px;
+  margin-left: -60px;
+}
+
+.hotel-list {
+  padding-top: 50px;
+}
+
+.hotel-list li {
+  border-bottom: 2px solid #fff;
+  height: 50px;
+  padding-top: 20px;
+}
+
+.hotel-list li:hover {
+  border-color: #ff7500;
+}
+
+/* Amenities Section CSS */
+
+.amenities {
+  margin-top: 80px;
+  margin-bottom: 150px;
+}
+
+.amenities li a {
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 131.02%;
+  color: #565656;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.amenities li a span {
+  width: 100%;
+  max-width: 50px;
+}
+
+/* Stay Section CSS */
+
+.stay-info li img {
+  z-index: -1;
+  position: absolute;
+  margin-left: -18px;
+  margin-top: -10px;
+}
+
+.stay-info li h4 {
+  z-index: 1;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.stay-left-margin
+{
+  margin-left: -12px !important;
+}
+
+/* World of Choice Section CSS */
+
+.box {
+  transition: 0.7s;
+}
+
+.box:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* About Section CSS */
+
+.about-btn {
+  padding: 14px 46px;
+  background: #ff7500;
+  border-radius: 27px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 162.52%;
+  color: #ffffff;
+}
+
+.about-line {
+  width: 100%;
+  max-width: 125px;
+  min-height: 4px;
+  background: #ff7500;
+  border-radius: 3.5px;
+}
+
+
+/* Interior Section CSS */
+
+
+.Interior-heading-line {
+
+  max-width: 349px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 133%;
+  color: #292929;
+
+}
+
+.Interior-sub-line {
+  color: #292929;
+  opacity: 0.6;
+  max-width: 230px;
+  width: 100%;
+}
+
+
+
+.Interior-review-list li img {
+  position: relative;
+  margin-left: -15px;
+  z-index: 1;
+}
+
+.Interior-right-section {
+  background: #fff;
+  width: 339px;
+  height: 240px;
+}
+
+.card-left-indent{
+  margin-left: 40px !important;
+}
+
+.restaurant-section {
+  box-shadow: -14px 24px 68px -16px rgba(0, 0, 0, 0.12);
+}
+
+.rooms-info {
+  padding-top: 16%;
+}
+
+.rooms-overlay {
+  transform: translate(0, -10%);
+}
+
+
+/* Footer Section CSS */
+
+
+.foot-left-list li a {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 162.52%;
+  color: #FFFFFF;
+  transition: 0.75s;
+}
+
+.foot-left-list li {
+  padding-bottom: 20px !important;
+}
+
+.foot-left-list li:first-child a {
+
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 162.52%;
+  color: #FFFFFF;
+
+}
+
+.foot-left-list {
+  margin-top: 99px;
+  margin-left: -30px;
+}
+
+
+.footer-mid-section h4 {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 162.52%;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-align: center;
+  margin-top: 59px;
+}
+
+.footer-mid-section h6 {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 162.52%;
+  color: #FFFFFF;
+  opacity: 0.3;
+  max-width: 400px;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.footer-mid-section input[type=email] {
+  width: 260px;
+  height: 54px;
+  background: rgba(166, 166, 166, 0.05);
+  border: 1.5px solid #FFFFFF;
+  border-radius: 6px;
+  padding-left: 20px;
+  
+}
+
+.footer-mid-section a {
+  background: #FF6B00;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 135.3%;
+  padding: 19px 25px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.foot-right-list li a {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 162.52%;
+  color: #FFFFFF;
+  transition: 0.5s;
+}
+
+.foot-right-list li {
+  padding-bottom: 20px !important;
+}
+
+.foot-left-list li a:hover{
+  color: #FF6B00;
+}
+
+
+
+
+.foot-right-list li:first-child a {
+
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 162.52%;
+  color: #FFFFFF;
+
+}
+
+.foot-right-list li a:hover{
+  color: #FF6B00;
+}
+
+.foot-right-list {
+  margin-top: 99px;
+  
+}
+
+.copyright-section h6
+{font-family: 'Inter',sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FFFFFF;
+  text-align: center;
+  padding-top: 28px;
+  padding-bottom: 41px;
+  
+  
+}
+
+.copyright-section ul 
+{
+  gap: 20px;
+}
+
+.copyright-section ul li:hover
+{
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+@media screen and (max-width:576px) {
+  .card-left-indent{
+    margin: 0 !important;
+  }
+
+  .stay-left-margin{
+    margin: auto !important;
+  }
+}

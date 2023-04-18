@@ -1,0 +1,171 @@
+{
+  /* <label htmlFor="firstname">First Name: </label>
+        <input
+          value={props.userDetails.firstName}
+          type="text"
+          name="firstname"
+          className="first_name"
+          id="first_name"
+          placeholder="Enter First Name"
+          onChange={(e) =>
+            props.setUserDetails({
+              ...props.userDetails,
+              firstName: e.target.value,
+            })
+          }
+        /> */
+}
+{
+  /* <br />
+        <br /> */
+}
+{
+  /* <label htmlFor="lastname">Last Name: </label>
+        <input
+          value={props.userDetails.lastName}
+          type="text"
+          name="lastname"
+          className="last_name"
+          id="last_name"
+          placeholder="Enter Last Name"
+          onChange={(e) =>
+            props.setUserDetails({
+              ...props.userDetails,
+              lastName: e.target.value,
+            })
+          }
+        /> */
+}
+
+
+Form 2
+ {/* <label htmlFor="email" style={{ paddingLeft: "59px" }}>
+          Email Id:{" "}
+        </label>
+        <input
+          style={{ marginBottom: "10px" }}
+          type="email"
+          id="email"
+          name="email"
+          className="email"
+          placeholder="Enter Email"
+          value={props.userDetails.email}
+          onChange={(e) =>
+            props.setUserDetails({
+              ...props.userDetails,
+              email: e.target.value,
+            })
+          }
+        />
+        <br /> */}
+
+        <label htmlFor="contact" style={{ paddingLeft: "31.2px" }}>
+          Contact No:{" "}
+        </label>
+        <input
+          style={{ marginBottom: "10px" }}
+          type="number"
+          id="contact"
+          name="contact"
+          className="contact"
+          placeholder="Enter Contact Number"
+          value={props.userDetails.contact}
+          onChange={(e) =>
+            props.setUserDetails({
+              ...props.userDetails,
+              contact: e.target.value,
+            })
+          }
+        />
+        <br />
+
+        <label htmlFor="dob">Date of Birth: </label>
+        <input
+          type="date"
+          name="dob"
+          id="dob"
+          className="date"
+          placeholder="Enter Date"
+          value={props.userDetails.dob}
+          onChange={(e) =>
+            props.setUserDetails({ ...props.userDetails, dob: e.target.value })
+          }
+        />
+
+
+        //if want to clear form on deleteID
+        // props.setUserDetails(initial);
+    // props.setCancel("none");
+    // props.setFinalButton("SUBMIT");
+
+
+
+    Creating edit and delete button using cell property
+    // const columns: any = [
+  //   { name: "#", selector: (row: any) => row.id },
+  //   {
+  //     name: "First Name",
+  //     selector: (row: any) => row.firstName,
+  //     sortable: true,
+  //   },
+  //   { name: "Last Name", selector: (row: any) => row.lastName, sortable: true },
+  //   { name: "Gender", selector: (row: any) => row.gender },
+  //   { name: "Email Id", selector: (row: any) => row.email },
+  //   { name: "Contact No", selector: (row: any) => row.contact },
+  //   { name: "DOB", selector: (row: any) => row.dob, sortable: true },
+  //   { name: "Sports", selector: (row: any) => row.favouriteSports },
+  //   { name: "About You", selector: (row: any) => row.about },
+  //   { name: "T & C", selector: (row: any) => row.TC },
+  //   {
+  //     name: "Edit",
+  //     cell: (row: any) => (
+  //       <button className="Edit" onClick={() => modifyRow(row.id)}>
+  //         Edit
+  //       </button>
+  //     ),
+  //   },
+  //   {
+  //     name: "Delete",
+  //     cell: (row: any) => (
+  //       <button
+  //         className="Delete"
+  //         onClick={() => {
+  //           edit
+  //             ? alert("Cannot Delete when Updating Data")
+  //             : deleteRow(row.id);
+  //         }}
+  //       >
+  //         Delete
+  //       </button>
+  //     ),
+  //   },
+  // ];
+
+  Another way to add column
+    // if (formData.length > 0 && filteredData.length > 0) {
+  //   columns.push(
+  //     {
+  //       name: "Edit",
+  //       cell: (row: any) => (
+  //         <button className="Edit" onClick={() => modifyRow(row.id)}>
+  //           Edit
+  //         </button>
+  //       ),
+  //     },
+  //     {
+  //       name: "Delete",
+  //       cell: (row: any) => (
+  //         <button
+  //           className="Delete"
+  //           onClick={() => {
+  //             edit
+  //               ? alert("Cannot Delete when Updating Data")
+  //               : deleteRow(row.id);
+  //           }}
+  //         >
+  //           Delete
+  //         </button>
+  //       ),
+  //     }
+  //   );
+  // }

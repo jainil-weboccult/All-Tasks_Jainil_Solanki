@@ -1,0 +1,103 @@
+import React from "react";
+import "../Personal.css";
+import Input from "./Input";
+
+export default function Personal(props) {
+  return (
+    <div className="personalise">
+      <h1>Personalise your card details</h1>
+      <form onSubmit="#">
+        {/* <input
+          type="text"
+          placeholder="Enter Name of Company"
+          required
+          value={props.cname}
+          onChange={(e) => props.setCname(e.target.value)}
+          minlength="2"
+          maxlength="20"
+        /> */}
+        <Input
+          type={"text"}
+          placeholder={"Enter Name of Company"}
+          value={props.cname}
+          onChange={(e) => props.setCname(e.target.value)}
+          minlength={"2"}
+          maxlength={"20"}
+        />
+        {/* <input
+          type="text"
+          placeholder="Enter Font Awesome 4 Logo Class (Like, fa-coffee)
+        Refer: 
+        https://fontawesome.com/v4/icons/ "
+          required
+          maxlength="20"
+          value={props.clogo}
+          onChange={(e) => props.setClogo(e.target.value)}
+          minlength="2"
+          maxlength="20"
+        /> */}
+        <Input
+          type={"text"}
+          placeholder={
+            "Enter Font Awesome 4 Logo Class (Like, fa-coffee)Refer: https://fontawesome.com/v4/icons/"
+          }
+          value={props.clogo}
+          onChange={(e) => props.setClogo(e.target.value)}
+          minlength={"2"}
+          maxlength={"20"}
+        />
+
+        <input
+          type="text"
+          placeholder="Enter Website URL"
+          required
+          value={props.cwb}
+          onChange={(e) => {
+            props.setCwb(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          placeholder="Enter Full Name"
+          required
+          value={props.cfn}
+          onChange={(e) => {
+            props.setCfn(e.target.value);
+          }}
+          minlength="2"
+          maxlength="20"
+        />
+        <input
+          type="text"
+          placeholder="Enter Designation"
+          required
+          value={props.cdsn}
+          onChange={(e) => {
+            props.setCdsn(e.target.value);
+          }}
+          minlength="2"
+          maxlength="20"
+        />
+        <input
+          type="number"
+          placeholder="Enter Contact Number"
+          required
+          value={props.cn}
+          onChange={(e) => {
+            props.setCn(e.target.value);
+          }}
+          maxlength="10"
+        />
+        <input
+          type="email"
+          placeholder="Enter Email Address"
+          required
+          value={props.email}
+          onChange={(e) => {
+            props.setCmail(e.target.value);
+          }}
+        />
+      </form>
+    </div>
+  );
+}

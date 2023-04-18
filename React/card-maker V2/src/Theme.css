@@ -1,0 +1,37 @@
+h1 {
+  font-size: 24px;
+  width: 250px;
+}
+
+.theme-color-btns {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  gap: 10px;
+}
+
+.reset-btn {
+  padding: 10px 0px;
+}
+
+.white-btn {
+  padding: 0;
+  width: 100px;
+}
+.black-btn {
+  padding: 0;
+  width: 100px;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: 3px solid black;
+}

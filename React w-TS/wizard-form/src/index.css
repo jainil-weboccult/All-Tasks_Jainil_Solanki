@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  letter-spacing: 0.5em;
+  font-size: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 10px 200px;
+}
+
+.btn-list {
+  display: flex;
+}
+
+.btn {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  color: teal;
+  letter-spacing: 0.2em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 20px 87px;
+}
+
+.active {
+  border-bottom: none;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  color: black;
+}
+
+.form-content {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  min-height: 400px;
+}
+
+.form label {
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+
+.form1 input[type="text"] {
+  padding: 5px;
+  text-align: left;
+  width: 350px;
+  border: 1px solid lightgray;
+  font-size: 16px;
+  color: cornflowerblue;
+  border-radius: 2px;
+}
+
+.form1 input[type="radio"] {
+  width: 25px;
+  height: 20px;
+}
+
+.input-radio {
+  display: flex;
+  align-items: center;
+}
+
+.input-radio span {
+  font-family: 18px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.form2 input[type="date"],
+input[type="email"],
+input[type="number"] {
+  padding: 5px;
+  text-align: left;
+  width: 350px;
+  border: 1px solid lightgray;
+  font-size: 16px;
+  color: cornflowerblue;
+  border-radius: 2px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+.about,
+.fsports {
+  padding: 5px;
+  text-align: left;
+  width: 350px;
+  border: 1px solid lightgray;
+  font-size: 16px;
+  color: cornflowerblue;
+  border-radius: 2px;
+  background: none;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+}
+
+.terms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-list-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  gap: 350px;
+}
+
+.btn-list-bottom a {
+  color: black;
+  border: 1px solid black;
+  font-weight: 900;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  padding: 5px 5px;
+  border-radius: 2px;
+}
+
+button {
+  color: black;
+  border: 1px solid black;
+  font-weight: 900;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  padding: 5px 5px;
+  border-radius: 2px;
+  background-color: white;
+  cursor: pointer;
+}
+.border {
+  border: 1px solid lightgray;
+  max-width: 720px;
+  margin: auto;
+  width: 100%;
+}
+
+.form1,
+.form2,
+.form3 {
+  margin-top: 20px;
+}
+
+.table-data {
+  height: 200px;
+  margin-top: 10px;
+}
+.table-data thead th {
+  position: sticky;
+  top: 0px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  padding: 15px 20px;
+  border: 1px solid #ccc;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+th {
+  background: cornflowerblue;
+  color: white;
+}
+
+option {
+  color: cornflowerblue;
+}
+
+.Delete {
+  background-color: red;
+  color: white;
+  padding: 10px 5px;
+  border-radius: 5px;
+}
+.Edit {
+  background-color: blue;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 5px;
+}
+
+.save:hover,
+button:hover {
+  box-shadow: 0px 5px grey;
+}
+.save,
+button {
+  transition: 0.3s;
+}
+
+.search {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
+.date-component {
+  display: flex;
+}
+
+.date {
+  margin-left: 5px !important;
+}
+
+.input-mask {
+  padding: 5px;
+  text-align: left;
+  width: 350px;
+  border: 1px solid lightgray;
+  font-size: 16px;
+  color: cornflowerblue;
+  border-radius: 2px;
+}
+
+.masked-inputs-section {
+}
+
+input:invalid {
+  border-color: red;
+}

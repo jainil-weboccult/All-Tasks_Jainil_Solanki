@@ -1,0 +1,19 @@
+.personalise{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    
+}
+form input{
+    margin:5px;
+}
+[type="text"],[type="email"],[type="number"]{
+    border:1px solid #ccc;
+    padding:20px 50px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

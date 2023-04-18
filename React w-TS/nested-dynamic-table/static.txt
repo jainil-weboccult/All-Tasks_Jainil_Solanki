@@ -1,0 +1,34 @@
+{/* <DataTable columns={columns} data={tabledata} pagination={true} />; */}
+      {/* {tabledata.map((item: any, index: any) => {
+        // item.type.map((iitem: any) => {
+        //   columns.push({
+        //     name: iitem,
+        //     selector: (row: any) => row.iitem,
+        //   });
+        //   return <></>;
+        // });
+        <Tabledata tablename={item.tablename} item={item} />;
+        return <></>;
+      })} */}
+
+         <TextField
+              margin="dense"
+              id="type"
+              label="Type Name"
+              type="text"
+              fullWidth
+              variant="outlined"
+              onChange={(e) =>
+                setFormData({
+                  ...formdata,
+                  type: [...formdata.type, { value: e.target.value }],
+                })
+              }
+              required
+            ></TextField>
+
+
+
+            {/* {iitem.type.length > 15
+                ? iitem.type.substring(0, 15) + "..."
+                : iitem.type}{" "} */}

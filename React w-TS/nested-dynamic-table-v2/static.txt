@@ -1,0 +1,221 @@
+
+  // const renderSubcategories = (subcategories: Category[]) => {
+  //   return subcategories.map((subcategory) => {
+  //     if (subcategory.subcategories && subcategory.subcategories.length > 0) {
+  //       return (
+  //         <React.Fragment key={subcategory.id}>
+  //           <Accordion>
+  //             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+  //               <TableCell>
+  //                 {subcategory.category}
+  //                 <IconButton
+  //                   aria-label="Add Another Category"
+  //                   color="primary"
+  //                   size="small"
+  //                   onClick={(e) => {
+  //                     e.stopPropagation();
+  //                     handleOpenSubCategory(
+  //                       subcategory.id,
+  //                       subcategory.currentLevel + 1
+  //                     );
+  //                   }}
+  //                 >
+  //                   <AddIcon fontSize="inherit" />
+  //                 </IconButton>
+  //               </TableCell>
+  //               <TableCell>
+  //                 {subcategory.values.map((value: any) => value + ", ")}
+  //               </TableCell>
+  //             </AccordionSummary>
+  //             <AccordionDetails>
+  //               {renderSubcategories(subcategory.subcategories)}
+  //             </AccordionDetails>
+  //           </Accordion>
+  //         </React.Fragment>
+  //       );
+  //     } else {
+  //       return (
+  //         <React.Fragment key={subcategory.id}>
+  //           <TableRow>
+  //             <TableCell>
+  //               {subcategory.category}
+  //               <IconButton
+  //                 aria-label="Add Another Category"
+  //                 color="primary"
+  //                 size="small"
+  //                 onClick={(e) => {
+  //                   e.stopPropagation();
+  //                   handleOpenSubCategory(
+  //                     subcategory.id,
+  //                     subcategory.currentLevel + 1
+  //                   );
+  //                 }}
+  //               >
+  //                 <AddIcon fontSize="inherit" />
+  //               </IconButton>
+  //             </TableCell>
+  //             {props.item.types.map((type: any) => {
+  //               return (
+  //                 <TableCell>
+  //                   <TextField
+  //                     margin="dense"
+  //                     type="number"
+  //                     fullWidth
+  //                     variant="outlined"
+  //                   />
+  //                 </TableCell>
+  //               );
+  //             })}
+  //             <TableCell>
+  //               {subcategory.values.map((value: any) => value + ", ")}
+  //             </TableCell>
+  //           </TableRow>
+  //         </React.Fragment>
+  //       );
+  //     }
+  //   });
+  // };
+
+
+
+
+  //   function addNewType(e: any) {
+  //     e.preventDefault();
+  //     const updatedItem = {
+  //       ...props.tabledata,
+  //       types: [
+  //         ...props.tabledata.types,
+  //         {
+  //           //   id: categoryID,
+  //           //   category: formdata.category,
+  //           //   //   values: props.ta.types.map((it: { type: string }) => {
+  //           //   //     return { typeName: it.type, typeValue: 0 };
+  //           //   //   }),
+  //           //   subcategories: [],
+  //           type: formdata.type,
+  //         },
+  //       ],
+  //     };
+
+  //     const updatedTableData = props.maindata.map((tableItem: any) =>
+  //       tableItem.id === props.tabledata.id ? updatedItem : tableItem
+  //     );
+  //     props.setTableData(updatedTableData);
+  //     handleCloseType();
+  //   }
+
+
+// function updateValue(
+  //   tableData: any,
+  //   parentId: any,
+  //   id: any,
+  //   currentLevel: any,
+  //   index: any,
+  //   value: number
+  // ) {
+  //   const updatedCategory = [...tableData];
+  //   updatedCategory.forEach((category: any) => {
+  //     if (currentLevel === 0 && category.id === id) {
+  //       // If we are at the top level and found the category with the matching ID, update its values array at the specified index
+  //       const updatedValues = [...category.values];
+  //       updatedValues[index].typeValue = value;
+  //       return { ...category, values: updatedValues };
+  //     }
+  //     if (category.id === parentId) {
+  //       if (category.subcategories) {
+  //         category.subcategories.forEach((subcat: any) => {
+  //           if (subcat.id === id) {
+  //             console.log("subcat: ", subcat);
+
+  //             const updatedValues = [...subcat.values];
+  //             updatedValues[index].typeValue = value;
+  //             subcat.values = updatedValues;
+  //           } else {
+  //             updateValue(
+  //               subcat.subcategories,
+  //               parentId,
+  //               id,
+  //               currentLevel + 1,
+  //               index,
+  //               value
+  //             );
+  //           }
+  //         });
+  //       }
+  //     }
+  //   });
+
+  //   const updatedItem = { ...props.item, categories: updatedCategory };
+
+  //   const updatedTableData = props.maindata.map((tableItem: any) =>
+  //     tableItem.id === props.item.id ? updatedItem : tableItem
+  //   );
+
+  //   props.setTableData(updatedTableData);
+  // }
+
+  // function updateValue(
+  //   tableData: any,
+  //   parentId: any,
+  //   id: any,
+  //   currentLevel: any,
+  //   index: any,
+  //   value: number
+  // ) {
+  //   const updatedCategory = [...tableData];
+  //   updatedCategory.forEach((category: any) => {
+  //     if (currentLevel === 0 && category.id === id) {
+  //       // If we are at the top level and found the category with the matching ID, update its values array at the specified index
+  //       const updatedValues = [...category.values];
+  //       updatedValues[index].typeValue = value;
+  //       return { ...category, values: updatedValues };
+  //     }
+  //     if (category.id === parentId) {
+  //       if (category.subcategories) {
+  //         category.subcategories.forEach((subcat: any) => {
+  //           if (subcat.id === id) {
+  //             const updatedValues = [...subcat.values];
+  //             updatedValues[index].typeValue = value;
+  //             subcat.values = updatedValues;
+  //           } else if (subcat.subcategories) {
+  //             updateValue(
+  //               subcat.subcategories,
+  //               parentId,
+  //               id,
+  //               currentLevel + 1,
+  //               index,
+  //               value
+  //             );
+  //           }
+  //         });
+  //       }
+  //     }
+  //   });
+
+  //   const updatedItem = { ...props.item, categories: updatedCategory };
+
+  //   const updatedTableData = props.maindata.map((tableItem: any) =>
+  //     tableItem.id === props.item.id ? updatedItem : tableItem
+  //   );
+
+  //   props.setTableData(updatedTableData);
+  // }
+
+// let parent = tableData.find((item: any) => item.id === parentId);
+    // if (parent) {
+    //   console.log("PKPK", parent);
+    //   if (parent.subcategories && parent.subcategories.length > 1) {
+    //     parent.values[index].typeValue = parent.subcategories.reduce(
+    //       (acc: any, item: any) =>
+    //         acc.values[index].typeValue + item.values[index].typeValue
+    //     );
+    //   } else if (parent.subcategories && parent.subcategories.length === 1) {
+    //     parent.values[index].typeValue =
+    //       parent.subcategories[0].values[index].typeValue;
+    //   }
+    //   console.log("PS", parent.subcategories);
+    //   console.log(parent.values);
+    // }
+
+
+sum main delay, save, cancel,theme

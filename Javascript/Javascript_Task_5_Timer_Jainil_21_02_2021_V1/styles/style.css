@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  a {
+    text-decoration: none;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 14px;
+  }
+  .wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+  }
+  .table-class {
+    margin: 0 50px;
+    align-items: center;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid lightgray;
+  }
+
+  .heading h3 {
+    text-align: center;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-weight: 300;
+    padding: 20px 0;
+  }
+  .table-class tr td p {
+    font-size: 20px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    padding: 20px 20px;
+  }
+
+  .table-tag {
+    color: black;
+    opacity: 0.5;
+    padding: 10px 20px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .input {
+    text-align: center;
+    padding: 10px 0;
+  }
+  .input input[type="number"] {
+    max-width: 375px;
+    width: 100%;
+    padding: 5px 0 5px 10px;
+
+    border-radius: 4px;
+    border: 1px solid lightgray;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 14px;
+  }
+  .btn-list {
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+  .btn {
+    background: inherit;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: 0.5s;
+  }
+  .Start {
+    border: 1px solid green;
+    color: green;
+  }
+  .Start:hover {
+    background: green;
+    color: white;
+  }
+
+  .Pause {
+    border: 1px solid deepskyblue;
+    color: deepskyblue;
+  }
+  .Pause:hover {
+    background: deepskyblue;
+    color: white;
+  }
+  .Stop {
+    border: 1px solid red;
+    color: red;
+  }
+  .Stop:hover {
+    background: red;
+    color: white;
+  }
+  .Reset {
+    border: 1px solid black;
+    color: black;
+  }
+  .Reset:hover {
+    background: black;
+    color: white;
+  }
+
+  .tagline {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+  }
+  .tag {
+    max-width: 375px;
+    width: 100%;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid black;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    padding: 5px 0;
+    color: rgba(0, 0, 0, 0.5);
+  }

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/logo.jpg" type="image/icon type">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Memory Game</title>
+</head>
+
+<body>
+    <div class="full-container">
+        <div class="main-section">
+            <div class="theme-btn">
+                <button class="score button" id="reset" onclick="theme()">Change Theme</button>
+            </div>
+            <br />
+            <div class="select-options">
+                <div class="select-type-btns">
+                    <p>Select Type:</p>
+                    <button class="type color button" onclick="inputSelected('color')">Color</button>
+                    <button class="type icon button" onclick="inputSelected('icon')">Icon</button>
+                    <button class="type images button" onclick="inputSelected('images')">Images</button>
+                </div>
+                <br>
+                <div class="select-size-btns">
+                    <p>Select Size:</p>
+                    <button class="size button" id="reset" onclick="twobythree()">2*3</button>
+                    <button class="size button" id="reset" onclick="threebyfour()">3*4</button>
+                    <button class="size button" id="reset" onclick="fourbyfive()">4*5</button>
+                </div>
+            </div>
+            <br>
+
+            <div class="random-btn">
+                <button class="score button" id="reset" onclick="randomise()">Random</button>
+            </div>
+            <br />
+            <div class="reset-btn">
+                <button class="score button" id="reset" onclick="resetGame()">&nbsp; Reset &nbsp;</button>
+            </div>
+        </div>
+        <div class="wrapper">
+            <h1>Memory Game</h1>
+            <div id="wrapper">
+
+            </div>
+
+        </div>
+
+        <div class="details">
+            <div class="time-table table">
+                <p>Time Taken:</p>
+                <span class="score" id="dminutes">M: 00</span>
+                <span class="score" id="dseconds">S: 00</span>
+
+            </div>
+            <br />
+            <div class="score-table table">
+                <p>Score:</p>
+                <p class="score" id="score">0</p>
+            </div>
+            <br />
+            <div class="click-table table">
+                <p>Total Card Open:</p>
+                <p class="score" id="copen">0</p>
+            </div>
+        </div>
+    </div>
+    <script src="./scripts/index.js"></script>
+</body>
+
+</html>

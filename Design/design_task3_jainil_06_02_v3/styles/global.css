@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  background-color: white;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@font-face {
+  font-family: Satoshi;
+  src: url(../assets/fonts/Satoshi-Regular.otf);
+}
+
+@font-face {
+  font-family: Faktum;
+  src: url(../assets/fonts/Rene\ Bieder\ -\ Faktum\ Test\ Bold.otf);
+}
+
+@font-face {
+  font-family: GeneralSans;
+  src: url(../assets/fonts/GeneralSans-Medium.otf);
+}
+
+@font-face {
+  font-family: Inter;
+  src: url(../assets/fonts/Inter-VariableFont_slnt\wght.ttf);
+}
+
+h1 {
+  font-family: Faktum;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+
+h2 {
+  font-family: Faktum;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: -2.88px;
+  color: #000000;
+}
+
+h3 {
+  font-family: GeneralSans;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4;
+  color: #000000;
+}
+
+h4 {
+  font-family: GeneralSans;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.18px;
+  color: #0e0b3d;
+}
+
+h5 {
+  font-family: Satoshi;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: -0.24px;
+  color: #ffffff;
+}
+
+h6 {
+  font-family: GeneralSans;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.72;
+  letter-spacing: 0.28px;
+  color: #000000;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1512px;
+  margin: auto;
+}

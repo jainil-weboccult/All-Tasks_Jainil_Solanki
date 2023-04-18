@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Sora", sans-serif;
+}
+
+h1 {
+  font-weight: 600;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 1px;
+}
+::-webkit-scrollbar-thumb {
+  background: #474440;
+}
+.primary-create-btn {
+  margin: 10px !important;
+}
+
+.edit-btn {
+  margin-right: 15px !important;
+  border-radius: 25px !important;
+}
+.table-heading {
+  font-size: 22px !important;
+  font-weight: 400 !important;
+
+  margin-left: 15px !important;
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  text-align: center !important;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.dialog-box {
+  padding: 10px;
+}
+.table-data {
+  width: 100px;
+}
+
+.container {
+  padding: 50px 15px 15px;
+}
+
+.btn-list Button {
+  border-radius: 25px;
+}
+
+.table-data {
+  border: none !important;
+}
+
+.table-title {
+  display: flex;
+}
+
+.theme-switch {
+  position: absolute !important;
+  transform: translate(1150px, 5px) !important;
+}
