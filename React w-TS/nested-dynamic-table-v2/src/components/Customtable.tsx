@@ -36,23 +36,34 @@ interface Category {
 
 type Props = {
   data: Category[];
-  setTableData: any;
+  setTableData: Function;
   item: any;
   maindata: any;
   openSubCategory: any;
   edit: number;
-  setSubOpen: any;
-  theme: any;
+  setSubOpen: Function;
+  theme: string;
+  setForceRender: Function;
+  forceRender: any;
+  setData: Function;
 };
 
 export default function CustomTable(props: Props) {
+  useEffect(() => {
+    props.setForceRender(!props.forceRender);
+  }, []);
+  // ------------------------------Declarations-------------------------
   const [formdata, setFormdata] = useState({
     category: "",
     type: "",
     subcategoryid: "",
     level: 0,
   });
+  // ------------------------------Declarations-------------------------
 
+  // ------------------------------Functions-------------------------
+
+  // ------------------------------Functions for add sub category dialog-------------------------
   function handleOpenSubCategory(subcategoryid: any, subcategorylevel: any) {
     setFormdata({
       ...formdata,
@@ -62,7 +73,9 @@ export default function CustomTable(props: Props) {
     props.setSubOpen(true);
   }
   const handleCloseSubCategory = () => props.setSubOpen(false);
+  // ------------------------------Functions for add sub category dialog-------------------------
 
+  // ------------------------------Function for adding subcategories at nth level-------------------------
   function addCategory(tableData: any, parentId: any, level: number) {
     const updatedCategory = [...tableData];
     uuid = uuidv4();
@@ -98,9 +111,12 @@ export default function CustomTable(props: Props) {
       tableItem.id === props.item.id ? updatedItem : tableItem
     );
     props.setTableData(updatedTableData);
+
     handleCloseSubCategory();
   }
+  // ------------------------------Function for adding subcategories at nth level-------------------------
 
+  // ------------------------------Function for updating values of categories -------------------------
   function updateValue(
     tableData: any,
     parentId: any,
@@ -120,24 +136,6 @@ export default function CustomTable(props: Props) {
       }
       if (category.subcategories) {
         // If the category has subcategories, recursively call the updateValue function on each one
-        // let parent = category;
-        // if (parent) {
-        //   console.log("PKPK", parent);
-        //   if (parent.subcategories && parent.subcategories.length > 1) {
-        //     parent.values[index].typeValue = parent.subcategories.reduce(
-        //       (acc: any, item: any) =>
-        //         acc.values[index].typeValue + item.values[index].typeValue
-        //     );
-        //   } else if (
-        //     parent.subcategories &&
-        //     parent.subcategories.length === 1
-        //   ) {
-        //     parent.values[index].typeValue =
-        //       parent.subcategories[0].values[index].typeValue;
-        //   }
-        //   console.log("PS", parent.subcategories);
-        //   console.log(parent.values);
-        // }
 
         updateValue(
           category.subcategories,
@@ -157,7 +155,9 @@ export default function CustomTable(props: Props) {
     );
     props.setTableData(updatedTableData);
   }
+  // ------------------------------Function for updating values of categories -------------------------
 
+  // ------------------------------Function for deleting primary category -------------------------
   function deleteCategory(id: any) {
     const updatedfilteredItem = props.item.categories.filter(
       (item: any, index: number) => item.id !== id
@@ -170,8 +170,33 @@ export default function CustomTable(props: Props) {
       tableItem.id === props.item.id ? updatedItem : tableItem
     );
     props.setTableData(updatedTableData);
+    props.setData(updatedItem);
   }
+  // ------------------------------Function for deleting primary category -------------------------
 
+  // ------------------------------Function for calculating sum of values of category having subcategories -------------------------
+  function updateValuesSum(subcategory: any, index: any) {
+    if (
+      subcategory.subcategories &&
+      subcategory.values[index] &&
+      subcategory.subcategories.length > 1
+    ) {
+      let sum = 0;
+      subcategory.subcategories.forEach((item: any) => {
+        sum += item.values[index].typeValue;
+      });
+      subcategory.values[index].typeValue = sum;
+    } else if (
+      subcategory.subcategories &&
+      subcategory.subcategories.length === 1
+    ) {
+      subcategory.values[index].typeValue =
+        subcategory.subcategories[0].values[index].typeValue;
+    }
+  }
+  // ------------------------------Function for calculating sum of values of category having subcategories -------------------------
+
+  // ------------------------------Function for displaying categories -------------------------
   const renderSubcategories = (subcategories: any) => {
     return subcategories.map((subcategory: any, sindex: any) => {
       if (subcategory.subcategories && subcategory.subcategories.length > 0) {
@@ -183,51 +208,7 @@ export default function CustomTable(props: Props) {
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography>{subcategory.category}</Typography>
                     {subcategory.values.map((value: any, index: any) => {
-                      if (
-                        subcategory.subcategories &&
-                        subcategory.values[index] &&
-                        subcategory.subcategories.length > 1
-                      ) {
-                        // subcategory.values[index].typeValue =
-                        //   subcategory.subcategories.reduce(
-                        //     (acc: any, item: any) => {
-
-                        //       return (
-                        //         acc.values[index].typeValue +
-                        //         item.values[index].typeValue
-                        //       );
-                        //     }
-                        //   );
-
-
-                        let sum = 0;
-                        subcategory.subcategories.forEach((item: any) => {
-                          sum += item.values[index].typeValue;
-                        });
-                        subcategory.values[index].typeValue = sum;
-
-                        console.log("subcategorie", subcategory.subcategories);
-
-                        console.log();
-                        
-                        // subcategory.subcategories.map((subsub: any, subidx) => {
-                        //   // subcategory.values[index].typeValue =
-                        //   //   subsub.values[index].typeValue;
-
-                        //   // subcategory.values[index].typeValue =
-                        //   subsub.values.map((val: any) => {
-                        //     subcategory.values[index].typeValue +=
-                        //       val.typevalue;
-                        //   });
-
-                        // });
-                      } else if (
-                        subcategory.subcategories &&
-                        subcategory.subcategories.length === 1
-                      ) {
-                        subcategory.values[index].typeValue =
-                          subcategory.subcategories[0].values[index].typeValue;
-                      }
+                      updateValuesSum(subcategory, index);
                       return <Typography>{value.typeValue}</Typography>;
                     })}
                     {props.edit === 1 && (
@@ -277,6 +258,7 @@ export default function CustomTable(props: Props) {
             >
               <TableCell>
                 {subcategory.category}
+
                 {props.edit === 1 && (
                   <>
                     {subcategory.currentLevel === 0 && (
@@ -314,6 +296,9 @@ export default function CustomTable(props: Props) {
                       type="number"
                       fullWidth
                       variant="outlined"
+                      InputProps={{
+                        readOnly: props.edit === 0 ? true : false,
+                      }}
                       value={subcategories[sindex].values[index].typeValue}
                       onChange={(e) => {
                         updateValue(
@@ -329,16 +314,15 @@ export default function CustomTable(props: Props) {
                   </TableCell>
                 );
               })}
-              {/* <TableCell>
-                {subcategory.values.map((value: any) => value + ", ")}
-              </TableCell> */}
             </TableRow>
           </React.Fragment>
         );
       }
     });
   };
+  // ------------------------------Function for displaying categories -------------------------
 
+  // ------------------------------Function for deleting type -------------------------
   function deleteType(tindex: number) {
     const updatedTableData = { ...props.item };
     const { categories } = updatedTableData;
@@ -371,7 +355,11 @@ export default function CustomTable(props: Props) {
     );
     props.setTableData(updatedMainData);
   }
+  // ------------------------------Function for deleting type -------------------------
 
+  // ------------------------------Functions End-------------------------
+
+  // ------------------------------Component-------------------------
   return (
     <>
       <TableContainer>

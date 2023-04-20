@@ -218,4 +218,146 @@
     // }
 
 
-sum main delay, save, cancel,theme
+
+// let parent = category;
+        // if (parent) {
+        //   console.log("PKPK", parent);
+        //   if (parent.subcategories && parent.subcategories.length > 1) {
+        //     parent.values[index].typeValue = parent.subcategories.reduce(
+        //       (acc: any, item: any) =>
+        //         acc.values[index].typeValue + item.values[index].typeValue
+        //     );
+        //   } else if (
+        //     parent.subcategories &&
+        //     parent.subcategories.length === 1
+        //   ) {
+        //     parent.values[index].typeValue =
+        //       parent.subcategories[0].values[index].typeValue;
+        //   }
+        //   console.log("PS", parent.subcategories);
+        //   console.log(parent.values);
+        // }
+
+
+
+        // if (
+                      //   subcategory.subcategories &&
+                      //   subcategory.values[index] &&
+                      //   subcategory.subcategories.length > 1
+                      // ) {
+
+                      //   let sum = 0;
+                      //   subcategory.subcategories.forEach((item: any) => {
+                      //     sum += item.values[index].typeValue;
+                      //   });
+                      //   subcategory.values[index].typeValue = sum;
+
+                      // } else if (
+                      //   subcategory.subcategories &&
+                      //   subcategory.subcategories.length === 1
+                      // ) {
+                      //   subcategory.values[index].typeValue =
+                      //     subcategory.subcategories[0].values[index].typeValue;
+                      // }
+
+
+
+// const initial = {
+//   id: 0,
+//   tablename: "table1",
+//   categoryname: "categories",
+//   categories: [
+//     {
+//       id: 1,
+//       category: "C1",
+//       values: [],
+//       subcategories: [
+//         {
+//           id: 11,
+//           category: "C1.1",
+//           values: [],
+//           categories: [],
+//           subcategories: [
+//             {
+//               id: 111,
+//               category: "C1.1.1",
+//               values: [],
+//               categories: [],
+//               subcategories: [
+//                 {
+//                   id: 1111,
+//                   category: "C1.1.1.1",
+//                   values: [],
+//                   categories: [],
+//                   subcategories: [],
+//                   parentId: 111,
+//                   currentLevel: 3,
+//                 },
+//               ],
+//               parentId: 11,
+//               currentLevel: 2,
+//             },
+//           ],
+//           parentId: 1,
+//           currentLevel: 1,
+//         },
+//         {
+//           id: 12,
+//           category: "C1.2",
+//           values: [],
+//           categories: [],
+//           subcategories: [
+//             {
+//               id: 121,
+//               category: "C1.2.1",
+//               values: [],
+//               categories: [],
+//               subcategories: [],
+//               parentId: 1,
+//               currentLevel: 2,
+//             },
+//           ],
+//           parentId: 1,
+//           currentLevel: 1,
+//         },
+//       ],
+//       parentId: 0,
+//       currentLevel: 0,
+//     },
+//     {
+//       id: 2,
+//       category: "C2",
+//       values: [],
+//       subcategories: [],
+//       parentId: 0,
+//       currentLevel: 0,
+//     },
+//     {
+//       id: 3,
+//       category: "C3",
+//       values: [],
+//       subcategories: [],
+//       parentId: 0,
+//       currentLevel: 0,
+//     },
+//     {
+//       id: 4,
+//       category: "C4",
+//       values: [],
+//       subcategories: [
+//         {
+//           id: 41,
+//           category: "C4.1",
+//           values: [],
+//           categories: [],
+//           subcategories: [],
+//           parentId: 4,
+//           currentLevel: 1,
+//         },
+//       ],
+//       parentId: 4,
+//       currentLevel: 0,
+//     },
+//   ],
+//   types: [],
+// };                      

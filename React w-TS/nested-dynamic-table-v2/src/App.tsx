@@ -36,108 +36,9 @@ interface FormContent {
   type: { value: string }[];
 }
 
-// const initial = {
-//   id: 0,
-//   tablename: "table1",
-//   categoryname: "categories",
-//   categories: [
-//     {
-//       id: 1,
-//       category: "C1",
-//       values: [],
-//       subcategories: [
-//         {
-//           id: 11,
-//           category: "C1.1",
-//           values: [],
-//           categories: [],
-//           subcategories: [
-//             {
-//               id: 111,
-//               category: "C1.1.1",
-//               values: [],
-//               categories: [],
-//               subcategories: [
-//                 {
-//                   id: 1111,
-//                   category: "C1.1.1.1",
-//                   values: [],
-//                   categories: [],
-//                   subcategories: [],
-//                   parentId: 111,
-//                   currentLevel: 3,
-//                 },
-//               ],
-//               parentId: 11,
-//               currentLevel: 2,
-//             },
-//           ],
-//           parentId: 1,
-//           currentLevel: 1,
-//         },
-//         {
-//           id: 12,
-//           category: "C1.2",
-//           values: [],
-//           categories: [],
-//           subcategories: [
-//             {
-//               id: 121,
-//               category: "C1.2.1",
-//               values: [],
-//               categories: [],
-//               subcategories: [],
-//               parentId: 1,
-//               currentLevel: 2,
-//             },
-//           ],
-//           parentId: 1,
-//           currentLevel: 1,
-//         },
-//       ],
-//       parentId: 0,
-//       currentLevel: 0,
-//     },
-//     {
-//       id: 2,
-//       category: "C2",
-//       values: [],
-//       subcategories: [],
-//       parentId: 0,
-//       currentLevel: 0,
-//     },
-//     {
-//       id: 3,
-//       category: "C3",
-//       values: [],
-//       subcategories: [],
-//       parentId: 0,
-//       currentLevel: 0,
-//     },
-//     {
-//       id: 4,
-//       category: "C4",
-//       values: [],
-//       subcategories: [
-//         {
-//           id: 41,
-//           category: "C4.1",
-//           values: [],
-//           categories: [],
-//           subcategories: [],
-//           parentId: 4,
-//           currentLevel: 1,
-//         },
-//       ],
-//       parentId: 4,
-//       currentLevel: 0,
-//     },
-//   ],
-//   types: [],
-// };
 function App() {
   // ------------------------------Declarations-------------------------
-
+  const [forceRender, setForceRender] = useState(false);
   const [theme, setTheme] = useState("light");
   const [open, setOpen] = useState(false);
   const [formdata, setFormData] = useState<FormContent>({
@@ -169,6 +70,7 @@ function App() {
     setOpen(false);
   };
 
+  // ------------------------------Add New Table Function-------------------------
   function addTable(e: any) {
     e.preventDefault();
 
@@ -193,7 +95,7 @@ function App() {
     });
     setOpen(false);
   }
-
+  // ------------------------------Function to add more than one types when creating table.-------------------------
   function addType() {
     setFormData({
       ...formdata,
@@ -201,9 +103,9 @@ function App() {
     });
   }
 
-  // ------------------------------Functions-------------------------
+  // ------------------------------Functions End-------------------------
 
-  // console.log(tabledata);
+  console.log(tabledata);
 
   // ------------------------------Component-------------------------
   return (
@@ -369,6 +271,8 @@ function App() {
           theme={theme}
           setTableData={setTableData}
           maindata={tabledata}
+          setForceRender={setForceRender}
+          forceRender={forceRender}
         />
       ))}
     </div>

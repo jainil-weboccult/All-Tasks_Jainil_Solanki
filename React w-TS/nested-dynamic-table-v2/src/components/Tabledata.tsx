@@ -17,9 +17,12 @@ type Props = {
   theme: string;
   setTableData: Function;
   maindata: any;
+  setForceRender: Function;
+  forceRender: any;
 };
 var uuid = uuidv4();
 export default function Tabledata(props: Props) {
+  // ------------------------------Declarations-------------------------
   const [editbtn, setEditbtn] = useState(0);
   const [formdata, setFormdata] = useState({ category: "", type: "" });
   const [openCategory, setOpen] = useState(false);
@@ -31,8 +34,17 @@ export default function Tabledata(props: Props) {
   const handleOpenType = () => setOpenType(true);
   const handleCloseType = () => setOpenType(false);
 
-  const [prevState, setPrevState] = useState(props.tabledata);
+  let string = JSON.stringify({ ...props.tabledata });
+  let newObj = JSON.parse(string);
+  const [prevState, setPrevState] = useState(newObj);
 
+  // const CustomTable states
+  const [data, setData] = useState<any>({ ...props.tabledata });
+  // ------------------------------Declarations-------------------------
+
+  // ------------------------------Functions-------------------------
+
+  // ------------------------------Function to add new primary category-------------------------
   function addNewRow(e: any) {
     e.preventDefault();
     uuid = uuidv4();
@@ -58,10 +70,13 @@ export default function Tabledata(props: Props) {
     const updatedTableData = props.maindata.map((tableItem: any) =>
       tableItem.id === props.tabledata.id ? updatedItem : tableItem
     );
+    setData({ ...updatedItem });
     props.setTableData(updatedTableData);
     handleCloseCategory();
   }
+  // ------------------------------Function to add new primary category-------------------------
 
+  // ------------------------------Function to add new type-------------------------
   function addNewType(e: any) {
     e.preventDefault();
     const { type } = formdata;
@@ -91,33 +106,51 @@ export default function Tabledata(props: Props) {
       tableItem.id === updatedTableData.id ? updatedTableData : tableItem
     );
     props.setTableData(updatedMainData);
-
+    setData({ ...updatedTableData });
     handleCloseType();
   }
+  // ------------------------------Function to add new type-------------------------
 
+  // ------------------------------Function to Delete Table from Main data-------------------------
   function deleteTable() {
     const updatedTableData = props.maindata.filter(
       (tableItem: any) => tableItem.id !== props.tabledata.id
     );
     props.setTableData(updatedTableData);
   }
+  // ------------------------------Function to Delete Table from Main data-------------------------
+
+  // ------------------------------Function for edit button-------------------------
   const setEditList = () => {
     setEditbtn(1);
+    let string = JSON.stringify({ ...props.tabledata });
+    let newObj = JSON.parse(string);
+    setPrevState(newObj);
   };
+  // ------------------------------Function for edit button-------------------------
 
+  // ------------------------------Function to save edits-------------------------
   function saveEdit() {
     setEditbtn(0);
-    setPrevState(props.tabledata);
+    setPrevState({ ...props.tabledata });
   }
+  // ------------------------------Function to save edits-------------------------
+
+  // ------------------------------Function to cancel edits-------------------------
   function cancelEdit() {
     setEditbtn(0);
 
     const updatedTableData = props.maindata.map((tableItem: any) =>
       tableItem.id === props.tabledata.id ? prevState : tableItem
     );
-    props.setTableData(updatedTableData);
+    props.setTableData([...updatedTableData]);
+    setData({ ...prevState });
   }
+  // ------------------------------Function to cancel edits-------------------------
 
+  // ------------------------------Functions End-------------------------
+
+  // ------------------------------Component-------------------------
   return (
     <div className="container">
       <div className="table-header">
@@ -191,14 +224,19 @@ export default function Tabledata(props: Props) {
       <br />
 
       <CustomTable
-        data={props.tabledata.categories}
+        // data={props.tabledata.categories}
+        data={data.categories}
         setTableData={props.setTableData}
-        item={props.tabledata}
+        // item={props.tabledata}
+        item={data}
         maindata={props.maindata}
         openSubCategory={openSubCategory}
         setSubOpen={setSubOpen}
         edit={editbtn}
         theme={props.theme}
+        setForceRender={props.setForceRender}
+        forceRender={props.forceRender}
+        setData={setData}
       />
       {/* //Category Dialog */}
       <Dialog open={openCategory} onClose={handleCloseCategory}>
