@@ -51,7 +51,7 @@ type Props = {
 export default function CustomTable(props: Props) {
   useEffect(() => {
     props.setForceRender(!props.forceRender);
-  }, []);
+  });
   // ------------------------------Declarations-------------------------
   const [formdata, setFormdata] = useState({
     category: "",
@@ -73,7 +73,6 @@ export default function CustomTable(props: Props) {
     props.setSubOpen(true);
   }
   const handleCloseSubCategory = () => props.setSubOpen(false);
-  // ------------------------------Functions for add sub category dialog-------------------------
 
   // ------------------------------Function for adding subcategories at nth level-------------------------
   function addCategory(tableData: any, parentId: any, level: number) {
@@ -114,7 +113,6 @@ export default function CustomTable(props: Props) {
 
     handleCloseSubCategory();
   }
-  // ------------------------------Function for adding subcategories at nth level-------------------------
 
   // ------------------------------Function for updating values of categories -------------------------
   function updateValue(
@@ -155,7 +153,6 @@ export default function CustomTable(props: Props) {
     );
     props.setTableData(updatedTableData);
   }
-  // ------------------------------Function for updating values of categories -------------------------
 
   // ------------------------------Function for deleting primary category -------------------------
   function deleteCategory(id: any) {
@@ -172,7 +169,6 @@ export default function CustomTable(props: Props) {
     props.setTableData(updatedTableData);
     props.setData(updatedItem);
   }
-  // ------------------------------Function for deleting primary category -------------------------
 
   // ------------------------------Function for calculating sum of values of category having subcategories -------------------------
   function updateValuesSum(subcategory: any, index: any) {
@@ -194,7 +190,6 @@ export default function CustomTable(props: Props) {
         subcategory.subcategories[0].values[index].typeValue;
     }
   }
-  // ------------------------------Function for calculating sum of values of category having subcategories -------------------------
 
   // ------------------------------Function for displaying categories -------------------------
   const renderSubcategories = (subcategories: any) => {
@@ -203,14 +198,28 @@ export default function CustomTable(props: Props) {
         return (
           <React.Fragment key={subcategory.id}>
             <TableRow>
-              <TableCell colSpan={props.item.types.length + 2}>
+              <TableCell colSpan={props.item.types.length + 2} width="auto">
                 <Accordion>
-                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography>{subcategory.category}</Typography>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    style={{
+                      background: props.theme === "light" ? "#fff" : "#edf0f4",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    <TableCell>
+                      <Typography>{subcategory.category}</Typography>
+                    </TableCell>
+
                     {subcategory.values.map((value: any, index: any) => {
                       updateValuesSum(subcategory, index);
-                      return <Typography>{value.typeValue}</Typography>;
+                      return (
+                        <TableCell>
+                          <Typography>{value.typeValue}</Typography>
+                        </TableCell>
+                      );
                     })}
+
                     {props.edit === 1 && (
                       <>
                         {subcategory.currentLevel === 0 && (
@@ -256,7 +265,7 @@ export default function CustomTable(props: Props) {
                 backgroundColor: props.theme === "light" ? "" : "#fff",
               }}
             >
-              <TableCell>
+              <TableCell sx={{ maxWidth: 300, minWidth: 300 }}>
                 {subcategory.category}
 
                 {props.edit === 1 && (
@@ -290,7 +299,7 @@ export default function CustomTable(props: Props) {
               </TableCell>
               {props.item.types.map((type: any, index: any) => {
                 return (
-                  <TableCell>
+                  <TableCell style={{ padding: "5px" }}>
                     <TextField
                       margin="dense"
                       type="number"
@@ -299,6 +308,7 @@ export default function CustomTable(props: Props) {
                       InputProps={{
                         readOnly: props.edit === 0 ? true : false,
                       }}
+                      sx={{ maxWidth: 400, minWidth: 400 }}
                       value={subcategories[sindex].values[index].typeValue}
                       onChange={(e) => {
                         updateValue(
@@ -320,7 +330,6 @@ export default function CustomTable(props: Props) {
       }
     });
   };
-  // ------------------------------Function for displaying categories -------------------------
 
   // ------------------------------Function for deleting type -------------------------
   function deleteType(tindex: number) {
@@ -355,7 +364,6 @@ export default function CustomTable(props: Props) {
     );
     props.setTableData(updatedMainData);
   }
-  // ------------------------------Function for deleting type -------------------------
 
   // ------------------------------Functions End-------------------------
 
@@ -365,7 +373,11 @@ export default function CustomTable(props: Props) {
       <TableContainer>
         <Table>
           <TableHead>
-            <TableRow style={{ background: "#b3bfd1" }}>
+            <TableRow
+              style={{
+                background: props.theme === "light" ? "#b3bfd1" : "#3e1046",
+              }}
+            >
               <TableCell
                 style={{
                   color: props.theme === "light" ? "#000" : "#fff",

@@ -95,6 +95,7 @@ function App() {
     });
     setOpen(false);
   }
+
   // ------------------------------Function to add more than one types when creating table.-------------------------
   function addType() {
     setFormData({
@@ -105,7 +106,7 @@ function App() {
 
   // ------------------------------Functions End-------------------------
 
-  console.log(tabledata);
+  // console.log(tabledata);
 
   // ------------------------------Component-------------------------
   return (

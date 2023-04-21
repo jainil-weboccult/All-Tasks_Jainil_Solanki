@@ -74,7 +74,6 @@ export default function Tabledata(props: Props) {
     props.setTableData(updatedTableData);
     handleCloseCategory();
   }
-  // ------------------------------Function to add new primary category-------------------------
 
   // ------------------------------Function to add new type-------------------------
   function addNewType(e: any) {
@@ -109,7 +108,6 @@ export default function Tabledata(props: Props) {
     setData({ ...updatedTableData });
     handleCloseType();
   }
-  // ------------------------------Function to add new type-------------------------
 
   // ------------------------------Function to Delete Table from Main data-------------------------
   function deleteTable() {
@@ -118,7 +116,6 @@ export default function Tabledata(props: Props) {
     );
     props.setTableData(updatedTableData);
   }
-  // ------------------------------Function to Delete Table from Main data-------------------------
 
   // ------------------------------Function for edit button-------------------------
   const setEditList = () => {
@@ -127,14 +124,12 @@ export default function Tabledata(props: Props) {
     let newObj = JSON.parse(string);
     setPrevState(newObj);
   };
-  // ------------------------------Function for edit button-------------------------
 
   // ------------------------------Function to save edits-------------------------
   function saveEdit() {
     setEditbtn(0);
     setPrevState({ ...props.tabledata });
   }
-  // ------------------------------Function to save edits-------------------------
 
   // ------------------------------Function to cancel edits-------------------------
   function cancelEdit() {
@@ -146,7 +141,6 @@ export default function Tabledata(props: Props) {
     props.setTableData([...updatedTableData]);
     setData({ ...prevState });
   }
-  // ------------------------------Function to cancel edits-------------------------
 
   // ------------------------------Functions End-------------------------
 
