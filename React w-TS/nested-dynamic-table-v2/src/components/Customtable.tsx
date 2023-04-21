@@ -24,6 +24,8 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
+
+const nodata: string = "nodata.png";
 var uuid = uuidv4();
 interface Category {
   id: number;
@@ -195,59 +197,94 @@ export default function CustomTable(props: Props) {
   const renderSubcategories = (subcategories: any) => {
     return subcategories.map((subcategory: any, sindex: any) => {
       if (subcategory.subcategories && subcategory.subcategories.length > 0) {
+        // Component Data to render subcategories
         return (
           <React.Fragment key={subcategory.id}>
             <TableRow>
+              {/* <TableCell colSpan={props.item.types.length + 2} width="auto"> */}
               <TableCell colSpan={props.item.types.length + 2} width="auto">
                 <Accordion>
                   <AccordionSummary
+                    className="accordionSummary"
                     expandIcon={<ExpandMoreIcon />}
                     style={{
                       background: props.theme === "light" ? "#fff" : "#edf0f4",
                       borderRadius: "5px",
                     }}
+                    sx={{ "& .MuiAccordionSummary-content": { margin: "0" } }}
                   >
-                    <TableCell>
-                      <Typography>{subcategory.category}</Typography>
-                    </TableCell>
+                    <TableCell
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        // paddingRight: "200px",
+                        paddingRight: `${
+                          subcategory.currentLevel * 100 + 100
+                        }px`,
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          width: "50px",
+                        }}
+                      >
+                        <TableCell>{subcategory.category}</TableCell>
 
+                        {props.edit === 1 && (
+                          <>
+                            {subcategory.currentLevel === 0 && (
+                              <IconButton
+                                aria-label="delete"
+                                color="error"
+                                size="small"
+                                onClick={() => deleteCategory(subcategory.id)}
+                              >
+                                <DeleteIcon fontSize="inherit" />
+                              </IconButton>
+                            )}
+                            <IconButton
+                              aria-label="Add Another Category"
+                              color="primary"
+                              size="small"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleOpenSubCategory(
+                                  subcategory.id,
+                                  subcategory.currentLevel + 1
+                                );
+                              }}
+                            >
+                              <AddIcon fontSize="inherit" />
+                            </IconButton>
+                          </>
+                        )}
+                      </div>
+                    </TableCell>
                     {subcategory.values.map((value: any, index: any) => {
                       updateValuesSum(subcategory, index);
                       return (
                         <TableCell>
-                          <Typography>{value.typeValue}</Typography>
+                          {/* <Typography>{value.typeValue}</Typography> */}
+                          <TextField
+                            margin="dense"
+                            type="number"
+                            fullWidth
+                            variant="outlined"
+                            InputProps={{
+                              readOnly: true,
+                            }}
+                            sx={{
+                              maxWidth: 500,
+                              minWidth: 500,
+                              paddingRight: "100px",
+                            }}
+                            value={value.typeValue}
+                          />
                         </TableCell>
                       );
                     })}
-
-                    {props.edit === 1 && (
-                      <>
-                        {subcategory.currentLevel === 0 && (
-                          <IconButton
-                            aria-label="delete"
-                            color="error"
-                            size="small"
-                            onClick={() => deleteCategory(subcategory.id)}
-                          >
-                            <DeleteIcon fontSize="inherit" />
-                          </IconButton>
-                        )}
-                        <IconButton
-                          aria-label="Add Another Category"
-                          color="primary"
-                          size="small"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleOpenSubCategory(
-                              subcategory.id,
-                              subcategory.currentLevel + 1
-                            );
-                          }}
-                        >
-                          <AddIcon fontSize="inherit" />
-                        </IconButton>
-                      </>
-                    )}
                   </AccordionSummary>
                   <AccordionDetails>
                     {renderSubcategories(subcategory.subcategories)}
@@ -259,47 +296,56 @@ export default function CustomTable(props: Props) {
         );
       } else {
         return (
+          // Component data to render single input
           <React.Fragment key={subcategory.id}>
             <TableRow
               style={{
                 backgroundColor: props.theme === "light" ? "" : "#fff",
               }}
             >
-              <TableCell sx={{ maxWidth: 300, minWidth: 300 }}>
-                {subcategory.category}
+              <TableCell sx={{ paddingRight: "150px" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: "50px",
+                  }}
+                >
+                  <TableCell>{subcategory.category}</TableCell>
 
-                {props.edit === 1 && (
-                  <>
-                    {subcategory.currentLevel === 0 && (
+                  {props.edit === 1 && (
+                    <>
+                      {subcategory.currentLevel === 0 && (
+                        <IconButton
+                          aria-label="delete"
+                          color="error"
+                          size="small"
+                          onClick={() => deleteCategory(subcategory.id)}
+                        >
+                          <DeleteIcon fontSize="inherit" />
+                        </IconButton>
+                      )}
                       <IconButton
-                        aria-label="delete"
-                        color="error"
+                        aria-label="Add Another Category"
+                        color="primary"
                         size="small"
-                        onClick={() => deleteCategory(subcategory.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleOpenSubCategory(
+                            subcategory.id,
+                            subcategory.currentLevel + 1
+                          );
+                        }}
                       >
-                        <DeleteIcon fontSize="inherit" />
+                        <AddIcon fontSize="inherit" />
                       </IconButton>
-                    )}
-                    <IconButton
-                      aria-label="Add Another Category"
-                      color="primary"
-                      size="small"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleOpenSubCategory(
-                          subcategory.id,
-                          subcategory.currentLevel + 1
-                        );
-                      }}
-                    >
-                      <AddIcon fontSize="inherit" />
-                    </IconButton>
-                  </>
-                )}
+                    </>
+                  )}
+                </div>
               </TableCell>
               {props.item.types.map((type: any, index: any) => {
                 return (
-                  <TableCell style={{ padding: "5px" }}>
+                  <TableCell style={{ paddingRight: "20px" }}>
                     <TextField
                       margin="dense"
                       type="number"
@@ -383,9 +429,10 @@ export default function CustomTable(props: Props) {
                   color: props.theme === "light" ? "#000" : "#fff",
                   fontSize: "16px",
                   fontWeight: "600",
+                  width: "300px",
                 }}
               >
-                {props.item.categoryname}
+                <p>{props.item.categoryname}</p>
               </TableCell>
               {props.item.types.map((type: any, index: any) => {
                 return (
@@ -395,6 +442,7 @@ export default function CustomTable(props: Props) {
                         color: props.theme === "light" ? "#000" : "#fff",
                         fontSize: "16px",
                         fontWeight: "600",
+                        width: "300px",
                       }}
                     >
                       {type.type}
@@ -415,7 +463,36 @@ export default function CustomTable(props: Props) {
               })}
             </TableRow>
           </TableHead>
-          <TableBody>{renderSubcategories(props.data)}</TableBody>
+          <TableBody>
+            {props.data.length > 0 ? (
+              renderSubcategories(props.data)
+            ) : (
+              <div
+                style={{
+                  position: "absolute",
+                  left: "45%",
+                }}
+              >
+                {/* No Entries Available */}
+                <img
+                  src={nodata}
+                  alt="No Entries Available"
+                  style={{ height: "100px" }}
+                />
+                {props.theme === "dark" && (
+                  <p
+                    style={{
+                      color: "#fff",
+                      fontSize: "10px",
+                      paddingLeft: "15px",
+                    }}
+                  >
+                    No data found
+                  </p>
+                )}
+              </div>
+            )}
+          </TableBody>
         </Table>
       </TableContainer>
 
