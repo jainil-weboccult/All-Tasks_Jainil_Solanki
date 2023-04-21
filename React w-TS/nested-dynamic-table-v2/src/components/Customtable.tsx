@@ -381,6 +381,8 @@ export default function CustomTable(props: Props) {
               <TableCell
                 style={{
                   color: props.theme === "light" ? "#000" : "#fff",
+                  fontSize: "16px",
+                  fontWeight: "600",
                 }}
               >
                 {props.item.categoryname}
@@ -391,6 +393,8 @@ export default function CustomTable(props: Props) {
                     <span
                       style={{
                         color: props.theme === "light" ? "#000" : "#fff",
+                        fontSize: "16px",
+                        fontWeight: "600",
                       }}
                     >
                       {type.type}
