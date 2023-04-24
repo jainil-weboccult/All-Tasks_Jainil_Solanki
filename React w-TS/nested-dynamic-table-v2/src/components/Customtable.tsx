@@ -10,8 +10,6 @@ import {
   IconButton,
   TextField,
   Tooltip,
-  Typography,
-  ariaHidden,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
@@ -25,7 +23,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const nodata: string = "nodata.png";
@@ -56,7 +54,7 @@ type Props = {
 export default function CustomTable(props: Props) {
   useEffect(() => {
     props.setForceRender(!props.forceRender);
-  }, []);
+  });
   // ------------------------------Declarations-------------------------
   const [formdata, setFormdata] = useState({
     category: "",
@@ -254,7 +252,7 @@ export default function CustomTable(props: Props) {
                   background: props.theme === "light" ? "fff" : "#000",
                   boxShadow: "none",
                   "&.Mui-expanded": {
-                    boxShadow: "5px 5px 5px  #000 !important",
+                    boxShadow: "3px 3px 3px  #000 !important",
                   },
                 }}
               >
