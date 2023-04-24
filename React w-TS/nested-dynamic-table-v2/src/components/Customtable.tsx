@@ -9,6 +9,7 @@ import {
   DialogTitle,
   IconButton,
   TextField,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -54,7 +55,7 @@ type Props = {
 export default function CustomTable(props: Props) {
   useEffect(() => {
     props.setForceRender(!props.forceRender);
-  }, []);
+  });
   // ------------------------------Declarations-------------------------
   const [formdata, setFormdata] = useState({
     category: "",
@@ -157,35 +158,7 @@ export default function CustomTable(props: Props) {
     props.setTableData(updatedTableData);
   }
 
-  // ------------------------------Function for deleting primary category -------------------------
-  // function deleteCategory(id: any) {
-  //   Swal.fire({
-  //     title: "Are you sure you want to delete this category?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       const updatedfilteredItem = props.item.categories.filter(
-  //         (item: any, index: number) => item.id !== id
-  //       );
-  //       const updatedItem = {
-  //         ...props.item,
-  //         categories: updatedfilteredItem,
-  //       };
-  //       const updatedTableData = props.maindata.map((tableItem: any) =>
-  //         tableItem.id === props.item.id ? updatedItem : tableItem
-  //       );
-  //       props.setTableData(updatedTableData);
-  //       props.setData(updatedItem);
-  //       Swal.fire("Deleted!", "Selected Category has been deleted.", "success");
-  //     }
-  //   });
-  // }
-
+  // ------------------------------Function for deleting categories -------------------------
   function confirmSubCategoryDelete(tableData: any, id: any, level: number) {
     Swal.fire({
       title: "Are you sure?",
@@ -569,7 +542,13 @@ export default function CustomTable(props: Props) {
                         fontWeight: "600",
                       }}
                     >
-                      {type.type}
+                      {type.type.length > 10 ? (
+                        <Tooltip title={type.type}>
+                          <span>{type.type.substring(0, 10)}...</span>
+                        </Tooltip>
+                      ) : (
+                        type.type
+                      )}
                     </span>
 
                     {props.edit === 1 && (
