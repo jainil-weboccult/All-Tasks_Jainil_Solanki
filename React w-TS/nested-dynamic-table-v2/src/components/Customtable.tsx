@@ -250,6 +250,7 @@ export default function CustomTable(props: Props) {
                   paddingLeft: "10px",
                   paddingTop: "10px",
                   paddingBottom: "10px",
+                  background: props.theme === "light" ? "fff" : "#000",
                 }}
               >
                 <AccordionSummary
@@ -365,7 +366,7 @@ export default function CustomTable(props: Props) {
           <TableRow
             key={subcategory.id}
             style={{
-              backgroundColor: props.theme === "light" ? "" : "#fff",
+              backgroundColor: props.theme === "light" ? "#fff" : "#000",
             }}
           >
             <TableCell>
@@ -376,7 +377,13 @@ export default function CustomTable(props: Props) {
                   padding: "10px",
                 }}
               >
-                <TableCell>{subcategory.category}</TableCell>
+                <TableCell>
+                  <span
+                    style={{ color: props.theme === "light" ? "#000" : "#fff" }}
+                  >
+                    {subcategory.category}
+                  </span>
+                </TableCell>
 
                 {props.edit === 1 && (
                   <>

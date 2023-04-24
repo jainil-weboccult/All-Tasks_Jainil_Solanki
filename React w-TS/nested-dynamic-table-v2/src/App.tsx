@@ -106,8 +106,6 @@ function App() {
 
   // ------------------------------Functions End-------------------------
 
-  console.log(tabledata);
-
   // ------------------------------Component-------------------------
   return (
     <div className="App">
@@ -131,7 +129,7 @@ function App() {
         Create Table
       </Button>
 
-      <FormControlLabel
+      {/* <FormControlLabel
         className="theme-switch"
         control={
           <Switch
@@ -186,7 +184,7 @@ function App() {
           />
         }
         label={theme === "light" ? "" : ""}
-      />
+      /> */}
 
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Create New Table</DialogTitle>
