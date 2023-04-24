@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CustomTable from "./Customtable";
 import { v4 as uuidv4 } from "uuid";
+import Swal from "sweetalert2";
 type Props = {
   key: number;
   tabledata: any;
@@ -111,10 +112,23 @@ export default function Tabledata(props: Props) {
 
   // ------------------------------Function to Delete Table from Main data-------------------------
   function deleteTable() {
-    const updatedTableData = props.maindata.filter(
-      (tableItem: any) => tableItem.id !== props.tabledata.id
-    );
-    props.setTableData(updatedTableData);
+    Swal.fire({
+      title: "Are you sure you want to delete this table?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        const updatedTableData = props.maindata.filter(
+          (tableItem: any) => tableItem.id !== props.tabledata.id
+        );
+        props.setTableData(updatedTableData);
+        Swal.fire("Deleted!", "Table has been deleted.", "success");
+      }
+    });
   }
 
   // ------------------------------Function for edit button-------------------------

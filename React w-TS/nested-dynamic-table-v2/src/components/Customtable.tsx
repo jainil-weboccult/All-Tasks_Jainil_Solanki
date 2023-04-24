@@ -24,6 +24,7 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const nodata: string = "nodata.png";
 var uuid = uuidv4();
@@ -158,18 +159,31 @@ export default function CustomTable(props: Props) {
 
   // ------------------------------Function for deleting primary category -------------------------
   function deleteCategory(id: any) {
-    const updatedfilteredItem = props.item.categories.filter(
-      (item: any, index: number) => item.id !== id
-    );
-    const updatedItem = {
-      ...props.item,
-      categories: updatedfilteredItem,
-    };
-    const updatedTableData = props.maindata.map((tableItem: any) =>
-      tableItem.id === props.item.id ? updatedItem : tableItem
-    );
-    props.setTableData(updatedTableData);
-    props.setData(updatedItem);
+    Swal.fire({
+      title: "Are you sure you want to delete this category?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updatedfilteredItem = props.item.categories.filter(
+          (item: any, index: number) => item.id !== id
+        );
+        const updatedItem = {
+          ...props.item,
+          categories: updatedfilteredItem,
+        };
+        const updatedTableData = props.maindata.map((tableItem: any) =>
+          tableItem.id === props.item.id ? updatedItem : tableItem
+        );
+        props.setTableData(updatedTableData);
+        props.setData(updatedItem);
+        Swal.fire("Deleted!", "Selected Category has been deleted.", "success");
+      }
+    });
   }
 
   // ------------------------------Function for calculating sum of values of category having subcategories -------------------------
@@ -199,75 +213,88 @@ export default function CustomTable(props: Props) {
       if (subcategory.subcategories && subcategory.subcategories.length > 0) {
         // Component Data to render subcategories
         return (
-          <React.Fragment key={subcategory.id}>
-            <TableRow>
-              {/* <TableCell colSpan={props.item.types.length + 2} width="auto"> */}
-              <TableCell colSpan={props.item.types.length + 2} width="auto">
-                <Accordion>
-                  <AccordionSummary
-                    className="accordionSummary"
-                    expandIcon={<ExpandMoreIcon />}
-                    style={{
-                      background: props.theme === "light" ? "#fff" : "#edf0f4",
-                      borderRadius: "5px",
+          <TableRow key={subcategory.id}>
+            <TableCell colSpan={props.item.types.length + 2} width="auto">
+              <Accordion
+                sx={{
+                  paddingLeft: "10px",
+                  paddingTop: "10px",
+                  paddingBottom: "10px",
+                }}
+              >
+                <AccordionSummary
+                  className="accordionSummary"
+                  expandIcon={<ExpandMoreIcon />}
+                  style={{
+                    background: "#edf0f4",
+                    borderRadius: "5px",
+                  }}
+                  sx={{
+                    "& .MuiAccordionSummary-content": {
+                      margin: "0",
+                      display: "flex",
+                      justifyContent: "space-between",
+                    },
+                  }}
+                >
+                  <TableCell
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
                     }}
-                    sx={{ "& .MuiAccordionSummary-content": { margin: "0" } }}
+                    colSpan={props.item.types.length + 2}
                   >
-                    <TableCell
-                      sx={{
+                    <div
+                      style={{
                         display: "flex",
                         alignItems: "center",
-                        // paddingRight: "200px",
-                        paddingRight: `${
-                          subcategory.currentLevel * 100 + 100
-                        }px`,
                       }}
                     >
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          width: "50px",
-                        }}
-                      >
-                        <TableCell>{subcategory.category}</TableCell>
+                      <TableCell colSpan={props.item.types.length + 2}>
+                        {subcategory.category}
+                      </TableCell>
 
-                        {props.edit === 1 && (
-                          <>
-                            {subcategory.currentLevel === 0 && (
-                              <IconButton
-                                aria-label="delete"
-                                color="error"
-                                size="small"
-                                onClick={() => deleteCategory(subcategory.id)}
-                              >
-                                <DeleteIcon fontSize="inherit" />
-                              </IconButton>
-                            )}
-                            <IconButton
-                              aria-label="Add Another Category"
-                              color="primary"
-                              size="small"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleOpenSubCategory(
-                                  subcategory.id,
-                                  subcategory.currentLevel + 1
-                                );
-                              }}
-                            >
-                              <AddIcon fontSize="inherit" />
-                            </IconButton>
-                          </>
-                        )}
-                      </div>
-                    </TableCell>
+                      {props.edit === 1 && (
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <IconButton
+                            aria-label="delete"
+                            color="error"
+                            size="small"
+                            onClick={() => deleteCategory(subcategory.id)}
+                          >
+                            <DeleteIcon fontSize="inherit" />
+                          </IconButton>
+
+                          <IconButton
+                            aria-label="Add Another Category"
+                            color="primary"
+                            size="small"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleOpenSubCategory(
+                                subcategory.id,
+                                subcategory.currentLevel + 1
+                              );
+                            }}
+                          >
+                            <AddIcon fontSize="inherit" />
+                          </IconButton>
+                        </div>
+                      )}
+                    </div>
+                  </TableCell>
+                  <TableCell>
                     {subcategory.values.map((value: any, index: any) => {
                       updateValuesSum(subcategory, index);
                       return (
-                        <TableCell>
-                          {/* <Typography>{value.typeValue}</Typography> */}
+                        <TableCell sx={{ width: "300px" }}>
                           <TextField
+                            sx={{
+                              paddingRight: "20px",
+                              paddingLeft: "20px",
+                              border: "none",
+                              "& fieldset": { border: "none" },
+                            }}
                             margin="dense"
                             type="number"
                             fullWidth
@@ -275,103 +302,102 @@ export default function CustomTable(props: Props) {
                             InputProps={{
                               readOnly: true,
                             }}
-                            sx={{
-                              maxWidth: 500,
-                              minWidth: 500,
-                              paddingRight: "100px",
-                            }}
                             value={value.typeValue}
+                            onClick={(e) => e.stopPropagation()}
                           />
                         </TableCell>
                       );
                     })}
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    {renderSubcategories(subcategory.subcategories)}
-                  </AccordionDetails>
-                </Accordion>
-              </TableCell>
-            </TableRow>
-          </React.Fragment>
+                  </TableCell>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Table>
+                    <TableBody>
+                      {renderSubcategories(subcategory.subcategories)}
+                    </TableBody>
+                  </Table>
+                </AccordionDetails>
+              </Accordion>
+            </TableCell>
+          </TableRow>
         );
       } else {
         return (
           // Component data to render single input
-          <React.Fragment key={subcategory.id}>
-            <TableRow
-              style={{
-                backgroundColor: props.theme === "light" ? "" : "#fff",
-              }}
-            >
-              <TableCell sx={{ paddingRight: "150px" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    width: "50px",
-                  }}
-                >
-                  <TableCell>{subcategory.category}</TableCell>
 
-                  {props.edit === 1 && (
-                    <>
-                      {subcategory.currentLevel === 0 && (
-                        <IconButton
-                          aria-label="delete"
-                          color="error"
-                          size="small"
-                          onClick={() => deleteCategory(subcategory.id)}
-                        >
-                          <DeleteIcon fontSize="inherit" />
-                        </IconButton>
-                      )}
-                      <IconButton
-                        aria-label="Add Another Category"
-                        color="primary"
-                        size="small"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleOpenSubCategory(
-                            subcategory.id,
-                            subcategory.currentLevel + 1
-                          );
-                        }}
-                      >
-                        <AddIcon fontSize="inherit" />
-                      </IconButton>
-                    </>
-                  )}
-                </div>
-              </TableCell>
-              {props.item.types.map((type: any, index: any) => {
-                return (
-                  <TableCell style={{ paddingRight: "20px" }}>
-                    <TextField
-                      margin="dense"
-                      type="number"
-                      fullWidth
-                      variant="outlined"
-                      InputProps={{
-                        readOnly: props.edit === 0 ? true : false,
-                      }}
-                      sx={{ maxWidth: 400, minWidth: 400 }}
-                      value={subcategories[sindex].values[index].typeValue}
-                      onChange={(e) => {
-                        updateValue(
-                          props.data,
-                          subcategory.parentId,
+          <TableRow
+            key={subcategory.id}
+            style={{
+              backgroundColor: props.theme === "light" ? "" : "#fff",
+            }}
+          >
+            <TableCell>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "10px",
+                }}
+              >
+                <TableCell>{subcategory.category}</TableCell>
+
+                {props.edit === 1 && (
+                  <>
+                    <IconButton
+                      aria-label="delete"
+                      color="error"
+                      size="small"
+                      onClick={() => deleteCategory(subcategory.id)}
+                    >
+                      <DeleteIcon fontSize="inherit" />
+                    </IconButton>
+
+                    <IconButton
+                      aria-label="Add Another Category"
+                      color="primary"
+                      size="small"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleOpenSubCategory(
                           subcategory.id,
-                          subcategory.currentLevel,
-                          index,
-                          Number(e.target.value)
+                          subcategory.currentLevel + 1
                         );
                       }}
-                    />
-                  </TableCell>
-                );
-              })}
-            </TableRow>
-          </React.Fragment>
+                    >
+                      <AddIcon fontSize="inherit" />
+                    </IconButton>
+                  </>
+                )}
+              </div>
+            </TableCell>
+            {props.item.types.map((type: any, index: any) => {
+              return (
+                <TableCell sx={{ width: "300px" }}>
+                  <TextField
+                    sx={{ paddingRight: "20px" }}
+                    margin="dense"
+                    type="number"
+                    fullWidth
+                    variant="outlined"
+                    InputProps={{
+                      readOnly: props.edit === 0 ? true : false,
+                    }}
+                    value={subcategories[sindex].values[index].typeValue}
+                    onChange={(e) => {
+                      updateValue(
+                        props.data,
+                        subcategory.parentId,
+                        subcategory.id,
+                        subcategory.currentLevel,
+                        index,
+                        Number(e.target.value)
+                      );
+                    }}
+                  />
+                </TableCell>
+              );
+            })}
+          </TableRow>
         );
       }
     });
@@ -379,36 +405,49 @@ export default function CustomTable(props: Props) {
 
   // ------------------------------Function for deleting type -------------------------
   function deleteType(tindex: number) {
-    const updatedTableData = { ...props.item };
-    const { categories } = updatedTableData;
+    Swal.fire({
+      title: "Are you sure you want to delete this type?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updatedTableData = { ...props.item };
+        const { categories } = updatedTableData;
 
-    // Helper function to update values recursively
-    const updateValues = (categoryArr: any) => {
-      categoryArr.forEach((category: any) => {
-        if (category.values) {
-          const filtered = category.values.filter(
-            (item: any, index: any) => index !== tindex
-          );
+        // Helper function to update values recursively
+        const updateValues = (categoryArr: any) => {
+          categoryArr.forEach((category: any) => {
+            if (category.values) {
+              const filtered = category.values.filter(
+                (item: any, index: any) => index !== tindex
+              );
 
-          category.values = filtered;
-        }
-        if (category.subcategories) {
-          updateValues(category.subcategories);
-        }
-      });
-    };
+              category.values = filtered;
+            }
+            if (category.subcategories) {
+              updateValues(category.subcategories);
+            }
+          });
+        };
 
-    // Remove type from table data types array
-    updatedTableData.types.splice(tindex, 1);
+        // Remove type from table data types array
+        updatedTableData.types.splice(tindex, 1);
 
-    // Update values array for all categories at any level
-    updateValues(categories);
+        // Update values array for all categories at any level
+        updateValues(categories);
 
-    // Update table data in state
-    const updatedMainData = props.maindata.map((tableItem: any) =>
-      tableItem.id === props.item.id ? updatedTableData : tableItem
-    );
-    props.setTableData(updatedMainData);
+        // Update table data in state
+        const updatedMainData = props.maindata.map((tableItem: any) =>
+          tableItem.id === props.item.id ? updatedTableData : tableItem
+        );
+        props.setTableData(updatedMainData);
+        Swal.fire("Deleted!", "Selected type has been deleted.", "success");
+      }
+    });
   }
 
   // ------------------------------Functions End-------------------------
@@ -416,7 +455,16 @@ export default function CustomTable(props: Props) {
   // ------------------------------Component-------------------------
   return (
     <>
-      <TableContainer>
+      <TableContainer
+        sx={{
+          "& .MuiTableCell-root": {
+            padding: "0",
+          },
+          "& .MuiAccordionDetails-root": {
+            padding: "0",
+          },
+        }}
+      >
         <Table>
           <TableHead>
             <TableRow
@@ -429,20 +477,25 @@ export default function CustomTable(props: Props) {
                   color: props.theme === "light" ? "#000" : "#fff",
                   fontSize: "16px",
                   fontWeight: "600",
-                  width: "300px",
+                  padding: "20px",
                 }}
               >
                 <p>{props.item.categoryname}</p>
               </TableCell>
               {props.item.types.map((type: any, index: any) => {
                 return (
-                  <TableCell>
+                  <TableCell
+                    sx={{
+                      width: "300px",
+                      wordWrap: "break-word",
+                      wordBreak: "break-all",
+                    }}
+                  >
                     <span
                       style={{
                         color: props.theme === "light" ? "#000" : "#fff",
                         fontSize: "16px",
                         fontWeight: "600",
-                        width: "300px",
                       }}
                     >
                       {type.type}
