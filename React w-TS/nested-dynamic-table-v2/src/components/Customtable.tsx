@@ -11,6 +11,7 @@ import {
   TextField,
   Tooltip,
   Typography,
+  ariaHidden,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
@@ -55,7 +56,7 @@ type Props = {
 export default function CustomTable(props: Props) {
   useEffect(() => {
     props.setForceRender(!props.forceRender);
-  });
+  }, []);
   // ------------------------------Declarations-------------------------
   const [formdata, setFormdata] = useState({
     category: "",
@@ -247,16 +248,21 @@ export default function CustomTable(props: Props) {
             <TableCell colSpan={props.item.types.length + 2} width="auto">
               <Accordion
                 sx={{
-                  paddingLeft: "10px",
+                  paddingLeft: subcategory.currentLevel !== 0 ? "20px" : "",
                   paddingTop: "10px",
                   paddingBottom: "10px",
                   background: props.theme === "light" ? "fff" : "#000",
+                  boxShadow: "none",
+                  "&.Mui-expanded": {
+                    boxShadow: "5px 5px 5px  #000 !important",
+                  },
                 }}
               >
                 <AccordionSummary
                   className="accordionSummary"
                   expandIcon={<ExpandMoreIcon />}
                   style={{
+                    //Change Accordion color here
                     background: "#edf0f4",
                     borderRadius: "5px",
                   }}
@@ -282,7 +288,16 @@ export default function CustomTable(props: Props) {
                       }}
                     >
                       <TableCell colSpan={props.item.types.length + 2}>
-                        {subcategory.category}
+                        {subcategory.category.length > 10 ? (
+                          <Tooltip title={subcategory.category}>
+                            <span>
+                              {subcategory.category.substring(0, 10)}...
+                            </span>
+                          </Tooltip>
+                        ) : (
+                          subcategory.category
+                        )}
+                        {/* {subcategory.category} */}
                       </TableCell>
 
                       {props.edit === 1 && (
@@ -329,7 +344,8 @@ export default function CustomTable(props: Props) {
                           <TextField
                             sx={{
                               paddingRight: "20px",
-                              paddingLeft: "20px",
+                              paddingLeft: "25px",
+                              // paddingLeft: "20px",
                               border: "none",
                               "& fieldset": { border: "none" },
                             }}
@@ -339,6 +355,7 @@ export default function CustomTable(props: Props) {
                             variant="outlined"
                             InputProps={{
                               readOnly: true,
+                              style: { fontWeight: 600 },
                             }}
                             value={value.typeValue}
                             onClick={(e) => e.stopPropagation()}
@@ -381,7 +398,13 @@ export default function CustomTable(props: Props) {
                   <span
                     style={{ color: props.theme === "light" ? "#000" : "#fff" }}
                   >
-                    {subcategory.category}
+                    {subcategory.category.length > 10 ? (
+                      <Tooltip title={subcategory.category}>
+                        <span>{subcategory.category.substring(0, 10)}...</span>
+                      </Tooltip>
+                    ) : (
+                      subcategory.category
+                    )}
                   </span>
                 </TableCell>
 
