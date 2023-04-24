@@ -54,7 +54,7 @@ type Props = {
 export default function CustomTable(props: Props) {
   useEffect(() => {
     props.setForceRender(!props.forceRender);
-  });
+  }, []);
   // ------------------------------Declarations-------------------------
   const [formdata, setFormdata] = useState({
     category: "",
@@ -158,9 +158,37 @@ export default function CustomTable(props: Props) {
   }
 
   // ------------------------------Function for deleting primary category -------------------------
-  function deleteCategory(id: any) {
+  // function deleteCategory(id: any) {
+  //   Swal.fire({
+  //     title: "Are you sure you want to delete this category?",
+  //     text: "You won't be able to revert this!",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes, delete it!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       const updatedfilteredItem = props.item.categories.filter(
+  //         (item: any, index: number) => item.id !== id
+  //       );
+  //       const updatedItem = {
+  //         ...props.item,
+  //         categories: updatedfilteredItem,
+  //       };
+  //       const updatedTableData = props.maindata.map((tableItem: any) =>
+  //         tableItem.id === props.item.id ? updatedItem : tableItem
+  //       );
+  //       props.setTableData(updatedTableData);
+  //       props.setData(updatedItem);
+  //       Swal.fire("Deleted!", "Selected Category has been deleted.", "success");
+  //     }
+  //   });
+  // }
+
+  function confirmSubCategoryDelete(tableData: any, id: any, level: number) {
     Swal.fire({
-      title: "Are you sure you want to delete this category?",
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
@@ -169,21 +197,50 @@ export default function CustomTable(props: Props) {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        const updatedfilteredItem = props.item.categories.filter(
-          (item: any, index: number) => item.id !== id
-        );
-        const updatedItem = {
-          ...props.item,
-          categories: updatedfilteredItem,
-        };
-        const updatedTableData = props.maindata.map((tableItem: any) =>
-          tableItem.id === props.item.id ? updatedItem : tableItem
-        );
-        props.setTableData(updatedTableData);
-        props.setData(updatedItem);
-        Swal.fire("Deleted!", "Selected Category has been deleted.", "success");
+        deleteCategory(tableData, id, level);
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
       }
     });
+  }
+
+  function deleteCategory(tableData: any, id: any, level: number) {
+    if (level === 0) {
+      const updatedfilteredItem = props.item.categories.filter(
+        (item: any, index: number) => item.id !== id
+      );
+      const updatedItem = {
+        ...props.item,
+        categories: updatedfilteredItem,
+      };
+      const updatedTableData = props.maindata.map((tableItem: any) =>
+        tableItem.id === props.item.id ? updatedItem : tableItem
+      );
+      props.setTableData(updatedTableData);
+      props.setData(updatedItem);
+    } else {
+      const updatedCategory = [...tableData];
+
+      updatedCategory.forEach((category: any) => {
+        const finalCategory = category.subcategories.filter(
+          (item: any) => item.id !== id
+        );
+
+        if (finalCategory) {
+          category.subcategories = finalCategory;
+        }
+
+        if (category.subcategories) {
+          deleteCategory(category.subcategories, id, level + 1);
+        }
+      });
+
+      const updatedItem = { ...props.item, categories: updatedCategory };
+
+      const updatedTableData = props.maindata.map((tableItem: any) =>
+        tableItem.id === props.item.id ? updatedItem : tableItem
+      );
+      props.setTableData(updatedTableData);
+    }
   }
 
   // ------------------------------Function for calculating sum of values of category having subcategories -------------------------
@@ -260,7 +317,14 @@ export default function CustomTable(props: Props) {
                             aria-label="delete"
                             color="error"
                             size="small"
-                            onClick={() => deleteCategory(subcategory.id)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              confirmSubCategoryDelete(
+                                props.data,
+                                subcategory.id,
+                                subcategory.currentLevel
+                              );
+                            }}
                           >
                             <DeleteIcon fontSize="inherit" />
                           </IconButton>
@@ -347,7 +411,14 @@ export default function CustomTable(props: Props) {
                       aria-label="delete"
                       color="error"
                       size="small"
-                      onClick={() => deleteCategory(subcategory.id)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        confirmSubCategoryDelete(
+                          props.data,
+                          subcategory.id,
+                          subcategory.currentLevel
+                        );
+                      }}
                     >
                       <DeleteIcon fontSize="inherit" />
                     </IconButton>

@@ -106,7 +106,7 @@ function App() {
 
   // ------------------------------Functions End-------------------------
 
-  // console.log(tabledata);
+  console.log(tabledata);
 
   // ------------------------------Component-------------------------
   return (
