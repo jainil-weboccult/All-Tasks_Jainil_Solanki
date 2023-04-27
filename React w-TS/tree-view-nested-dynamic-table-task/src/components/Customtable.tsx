@@ -10,19 +10,11 @@ import {
   IconButton,
   TextField,
   Tooltip,
+  Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { v4 as uuidv4 } from "uuid";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
@@ -236,98 +228,68 @@ export default function CustomTable(props: Props) {
     }
   }
 
-  // ------------------------------Function for displaying categories -------------------------
   // const renderSubcategories = (subcategories: any) => {
   //   return subcategories.map((subcategory: any, sindex: any) => {
   //     if (subcategory.subcategories && subcategory.subcategories.length > 0) {
   //       // Component Data to render subcategories
   //       return (
-  //         <ul key={subcategory.id}>
-  //           <div
-  //             style={{
-  //               display: "flex",
-  //               alignItems: "center",
-  //               paddingLeft: `${subcategory.currentLevel * 20}px`,
-  //             }}
-  //             className="treeview"
-  //           >
-  //             <div>
-  //               {subcategory.category.length > 10 ? (
-  //                 <Tooltip title={subcategory.category}>
-  //                   <span>{subcategory.category.substring(0, 10)}...</span>
-  //                 </Tooltip>
-  //               ) : (
-  //                 subcategory.category
-  //               )}
-  //               {/* {subcategory.category} */}
-  //             </div>
+  //         <li key={subcategory.id}>
+  //           <span>
+  //             {subcategory.category}
 
-  //             {props.edit === 1 && (
-  //               <div style={{ display: "flex", alignItems: "center" }}>
-  //                 <IconButton
-  //                   aria-label="Add Another Category"
-  //                   color="primary"
-  //                   size="small"
-  //                   onClick={(e) => {
-  //                     e.stopPropagation();
-  //                     handleOpenSubCategory(
-  //                       subcategory.id,
-  //                       subcategory.currentLevel + 1
-  //                     );
-  //                   }}
-  //                 >
-  //                   <AddIcon fontSize="inherit" />
-  //                 </IconButton>
-  //               </div>
-  //             )}
-  //           </div>
+  //             <IconButton
+  //               aria-label="Add Another Category"
+  //               color="primary"
+  //               size="small"
+  //               onClick={(e) => {
+  //                 e.stopPropagation();
+  //                 handleOpenSubCategory(
+  //                   subcategory.id,
+  //                   subcategory.currentLevel + 1
+  //                 );
+  //               }}
+  //             >
+  //               <AddIcon fontSize="inherit" />
+  //             </IconButton>
+  //           </span>
 
-  //           <div>{renderSubcategories(subcategory.subcategories)}</div>
-  //         </ul>
+  //           <ul style={{ paddingLeft: "30px" }}>
+  //             {renderSubcategories(subcategory.subcategories)}
+  //           </ul>
+  //         </li>
   //       );
   //     } else {
   //       return (
   //         // Component data to render single input
   //         <li key={subcategory.id}>
-  //           <div
-  //             className="treeview__level"
-  //             style={{
-  //               display: "flex",
-  //               alignItems: "center",
-  //               paddingLeft: `${subcategory.currentLevel * 20}px`,
-  //             }}
-  //           >
-  //             <span
-  //               style={{ color: props.theme === "light" ? "#000" : "#fff" }}
-  //             >
-  //               {subcategory.category.length > 10 ? (
-  //                 <Tooltip title={subcategory.category}>
-  //                   <span>{subcategory.category.substring(0, 10)}...</span>
-  //                 </Tooltip>
-  //               ) : (
-  //                 subcategory.category
-  //               )}
-  //             </span>
-
-  //             {props.edit === 1 && (
-  //               <>
-  //                 <IconButton
-  //                   aria-label="Add Another Category"
-  //                   color="primary"
-  //                   size="small"
-  //                   onClick={(e) => {
-  //                     e.stopPropagation();
-  //                     handleOpenSubCategory(
-  //                       subcategory.id,
-  //                       subcategory.currentLevel + 1
-  //                     );
-  //                   }}
-  //                 >
-  //                   <AddIcon fontSize="inherit" />
-  //                 </IconButton>
-  //               </>
+  //           <span style={{ color: props.theme === "light" ? "#000" : "#fff" }}>
+  //             {subcategory.category.length > 10 ? (
+  //               <Tooltip title={subcategory.category}>
+  //                 <span>{subcategory.category.substring(0, 10)}...</span>
+  //               </Tooltip>
+  //             ) : (
+  //               subcategory.category
   //             )}
-  //           </div>
+  //           </span>
+
+  //           {props.edit === 1 && (
+  //             <>
+  //               <IconButton
+  //                 aria-label="Add Another Category"
+  //                 color="primary"
+  //                 size="small"
+  //                 onClick={(e) => {
+  //                   e.stopPropagation();
+  //                   handleOpenSubCategory(
+  //                     subcategory.id,
+  //                     subcategory.currentLevel + 1
+  //                   );
+  //                 }}
+  //               >
+  //                 <AddIcon fontSize="inherit" />
+  //               </IconButton>
+  //             </>
+  //           )}
   //         </li>
   //       );
   //     }
@@ -340,35 +302,56 @@ export default function CustomTable(props: Props) {
         // Component Data to render subcategories
         return (
           <li key={subcategory.id}>
-            <span>
-              {subcategory.category}
+            <Accordion>
+              <span style={{ display: "flex", alignItems: "center" }}>
+                {/* {subcategory.category} */}
 
-              <IconButton
-                aria-label="Add Another Category"
-                color="primary"
-                size="small"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleOpenSubCategory(
-                    subcategory.id,
-                    subcategory.currentLevel + 1
-                  );
-                }}
-              >
-                <AddIcon fontSize="inherit" />
-              </IconButton>
-            </span>
+                <AccordionSummary
+                  className="accordionSummary"
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography style={{ marginLeft: "10px" }}>
+                    {subcategory.category}
+                  </Typography>
+                </AccordionSummary>
 
-            <ul style={{ paddingLeft: "30px" }}>
-              {renderSubcategories(subcategory.subcategories)}
-            </ul>
+                <IconButton
+                  aria-label="Add Another Category"
+                  color="primary"
+                  size="small"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleOpenSubCategory(
+                      subcategory.id,
+                      subcategory.currentLevel + 1
+                    );
+                  }}
+                  style={{ height: "30px", width: "30px" }}
+                >
+                  <AddIcon fontSize="inherit" />
+                </IconButton>
+              </span>
+
+              <ul style={{ paddingLeft: "30px", marginTop: "-8px" }}>
+                <AccordionDetails>
+                  {renderSubcategories(subcategory.subcategories)}
+                </AccordionDetails>
+              </ul>
+            </Accordion>
           </li>
         );
       } else {
         return (
           // Component data to render single input
           <li key={subcategory.id}>
-            <span style={{ color: props.theme === "light" ? "#000" : "#fff" }}>
+            <span
+              style={{
+                color: props.theme === "light" ? "#000" : "#fff",
+                marginRight: "10px",
+              }}
+            >
               {subcategory.category.length > 10 ? (
                 <Tooltip title={subcategory.category}>
                   <span>{subcategory.category.substring(0, 10)}...</span>
