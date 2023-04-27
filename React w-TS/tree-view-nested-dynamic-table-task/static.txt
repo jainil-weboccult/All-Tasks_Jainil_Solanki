@@ -361,3 +361,74 @@
 //   ],
 //   types: [],
 // };                      
+
+
+
+//For printing category information onlys
+  // const renderSubcategories = (subcategories: any) => {
+  //   return subcategories.map((subcategory: any, sindex: any) => {
+  //     if (subcategory.subcategories && subcategory.subcategories.length > 0) {
+  //       // Component Data to render subcategories
+  //       return (
+  //         <li key={subcategory.id}>
+  //           <span>
+  //             {subcategory.category}
+
+  //             <IconButton
+  //               aria-label="Add Another Category"
+  //               color="primary"
+  //               size="small"
+  //               onClick={(e) => {
+  //                 e.stopPropagation();
+  //                 handleOpenSubCategory(
+  //                   subcategory.id,
+  //                   subcategory.currentLevel + 1
+  //                 );
+  //               }}
+  //             >
+  //               <AddIcon fontSize="inherit" />
+  //             </IconButton>
+  //           </span>
+
+  //           <ul style={{ paddingLeft: "30px" }}>
+  //             {renderSubcategories(subcategory.subcategories)}
+  //           </ul>
+  //         </li>
+  //       );
+  //     } else {
+  //       return (
+  //         // Component data to render single input
+  //         <li key={subcategory.id}>
+  //           <span style={{ color: props.theme === "light" ? "#000" : "#fff" }}>
+  //             {subcategory.category.length > 10 ? (
+  //               <Tooltip title={subcategory.category}>
+  //                 <span>{subcategory.category.substring(0, 10)}...</span>
+  //               </Tooltip>
+  //             ) : (
+  //               subcategory.category
+  //             )}
+  //           </span>
+
+  //           {props.edit === 1 && (
+  //             <>
+  //               <IconButton
+  //                 aria-label="Add Another Category"
+  //                 color="primary"
+  //                 size="small"
+  //                 onClick={(e) => {
+  //                   e.stopPropagation();
+  //                   handleOpenSubCategory(
+  //                     subcategory.id,
+  //                     subcategory.currentLevel + 1
+  //                   );
+  //                 }}
+  //               >
+  //                 <AddIcon fontSize="inherit" />
+  //               </IconButton>
+  //             </>
+  //           )}
+  //         </li>
+  //       );
+  //     }
+  //   });
+  // };
