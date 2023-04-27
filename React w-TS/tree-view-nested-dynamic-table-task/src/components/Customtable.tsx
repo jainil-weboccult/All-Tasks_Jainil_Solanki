@@ -228,6 +228,7 @@ export default function CustomTable(props: Props) {
     }
   }
 
+  //For printing category information onlys
   // const renderSubcategories = (subcategories: any) => {
   //   return subcategories.map((subcategory: any, sindex: any) => {
   //     if (subcategory.subcategories && subcategory.subcategories.length > 0) {
@@ -302,7 +303,13 @@ export default function CustomTable(props: Props) {
         // Component Data to render subcategories
         return (
           <li key={subcategory.id}>
-            <Accordion>
+            <Accordion
+              sx={{
+                "& .MuiAccordion-root": {
+                  boxShadow: 0,
+                },
+              }}
+            >
               <span style={{ display: "flex", alignItems: "center" }}>
                 {/* {subcategory.category} */}
 
@@ -350,11 +357,14 @@ export default function CustomTable(props: Props) {
               style={{
                 color: props.theme === "light" ? "#000" : "#fff",
                 marginRight: "10px",
+                padding: "20px 30px ",
               }}
             >
               {subcategory.category.length > 10 ? (
                 <Tooltip title={subcategory.category}>
-                  <span>{subcategory.category.substring(0, 10)}...</span>
+                  <span style={{ border: "none" }}>
+                    {subcategory.category.substring(0, 10)}...
+                  </span>
                 </Tooltip>
               ) : (
                 subcategory.category

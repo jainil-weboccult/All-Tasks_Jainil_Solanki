@@ -118,7 +118,7 @@ function App() {
           color: theme === "light" ? "#000" : "#fff",
         }}
       >
-        Nested Dynamic Table
+        dynamic Tree View
       </h1>
       <Button
         variant={theme === "light" ? "outlined" : "contained"}
