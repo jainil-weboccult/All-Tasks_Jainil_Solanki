@@ -88,22 +88,6 @@ ul,
 li {
   list-style-type: none;
 }
-/* 
-ul {
-  border-left: 2px dashed grey;
-}
-
-.treeview__level::before {
-  content: "------";
-} */
-/*
-li {
-  display: flex;
-}
-
-*/
-
-/* original idea http://www.bootply.com/phf8mnMtpe */
 
 .tree {
   min-height: 20px;
